@@ -125,6 +125,7 @@
                             </ul>
                         </li>		
                         <li><a href="contact">Contact</a></li>
+                        <li><a href="adminPanel">Admin Panel</a></li>
                     </ul>	
                     <div class="clearfix"> </div>
                 </div>

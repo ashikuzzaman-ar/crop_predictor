@@ -41,4 +41,9 @@ public class Index {
         return "contact";
     }
 
+    @RequestMapping(value = "adminPanel", method = RequestMethod.GET)
+    public String doGETADMINPANEL() {
+        return "adminPanel";
+    }
+
 }
