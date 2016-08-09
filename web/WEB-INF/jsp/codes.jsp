@@ -37,7 +37,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="logo">
-                        <h1><a href="index.html">Edible</a></h1>
+                        <h1><a href="index">Edible</a></h1>
                     </div>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->

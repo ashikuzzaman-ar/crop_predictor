@@ -1,25 +1,175 @@
 <%@ include file="headerOne.jsp" %>
 <body>
+
+    <script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1"></script>
     <!--baner-->
     <div class="banner">
         <!-- container -->
         <div class="container">
             <div class="banner-top">
-                <div class="social">
-                    <ul>
-                        <li><a href="#" class="facebook"> </a></li>
-                        <li><a href="#" class="facebook twitter"> </a></li>
-                        <li><a href="#" class="facebook chrome"> </a></li>
-                        <li><a href="#" class="facebook dribbble"> </a></li>
-                    </ul>
-                </div>
+
                 <div class="header-top-right">
                     <form>
                         <input type="text" placeholder="Search" required="">
                         <input type="submit" value="">
                         <div class="clearfix"> </div>
+                        <div class="banner-button white-button" id="login_signup_btn">
+                            <h6><a href="#">Log In or Sign Up</a></h6>
+                        </div>
+
+                        <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login_signup_form">Open Modal</button>-->
                     </form>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="login_signup_form" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <!--<div class="modal-content">-->
+                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                        <div class="form">
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="tab active" 
+                                    style="font-size:2rem;
+                                    font-weight:600;
+                                    text-transform:uppercase;
+                                    letter-spacing:.1em;
+                                    background:#1ab188;
+                                    color:#13232f" >
+                                    <a style="color: #ffffff" href="#login">Log In</a></li>
+                                <li class="tab" 
+                                    style="font-size:2rem;
+                                    font-weight:600;
+                                    text-transform:uppercase;
+                                    letter-spacing:.1em;
+                                    background:#1ab188;
+                                    color:#13232f">
+                                    <a  style="color: #ffffff" href="#signup">Sign Up</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="signup" style="display: none;">   
+                                    <h2>Sign Up Free in "Crop Precision"</h2>
+                                    <form action="signup" method="POST" >
+                                        <!--method="post"-->
+                                        <div class="field-wrap">
+                                            <label>
+                                                Khotiyan number<span class="req">*</span>
+                                            </label>
+                                            <input type="text" name="khotiyan_number" required="" autocomplete="off">
+                                        </div>
+                                        <div class="field-wrap">
+                                            <label>
+                                                National ID number<span class="req">*</span>
+                                            </label>
+                                            <input type="text" name="nid" required="" autocomplete="off">
+                                        </div>
+                                        <div class="field-wrap ">
+                                            <label>
+                                                Amount of land<span class="req">*</span>
+                                            </label>
+                                            <input type="text" name="amount_of_land" required="" autocomplete="off">
+                                        </div>
+
+                                        <div class="field-wrap">
+                                            <label>
+                                                District<span class="req">*</span>
+                                            </label>
+                                            <input type="text" name="district" required="" autocomplete="off">
+                                        </div>
+                                        <div class="field-wrap">
+                                            <label>
+                                                Mobile No.<span class="req">*</span>
+                                            </label>
+                                            <input type="text" name="mobile_number" required="" autocomplete="off">
+                                        </div>
+                                        <button type="submit" class="button button-block">Get Started</button>
+
+                                    </form>
+
+                                </div>
+
+                                <div id="login" style="display: block;">   
+                                    <h1>Welcome to "Crop Precision"</h1>
+                                    <form action="login" method="POST">
+                                        <!--method="post"-->
+                                        <div class="field-wrap">
+                                            <label>
+                                                Khotiyan number<span class="req">*</span>
+                                            </label>
+                                            <input type="text" name="khotiyan_number" required="" autocomplete="off">
+                                        </div>
+
+                                        <div class="field-wrap">
+                                            <label>
+                                                Password<span class="req">*</span>
+                                            </label>
+                                            <input type="password" name="password" required="" autocomplete="off">
+                                        </div>
+
+                                        <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                                        <button name="login" type="submit" class="button button-block">Get Started</button>
+                                    </form>
+
+                                </div>
+
+                            </div><!-- tab-content -->
+                        </div>
+                    </div>
+                </div> 
+
+                <script>
+                    $(document).ready(function () {
+                        $("#login_signup_btn").click(function () {
+                            $("#login_signup_form").modal();
+                        });
+
+
+                        $("#serviceslink").click(function (e) {
+                            e.preventDefault();
+                            $(document).scrollTo('#services');
+                            return false;
+                        });
+
+
+                        $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+                            var $this = $(this), label = $this.prev('label');
+                            if (e.type === 'keyup') {
+                                if ($this.val() === '') {
+                                    label.removeClass('active highlight');
+                                } else {
+                                    label.addClass('active highlight');
+                                }
+                            } else if (e.type === 'blur') {
+                                if ($this.val() === '') {
+                                    label.removeClass('active highlight');
+                                } else {
+                                    label.removeClass('highlight');
+                                }
+                            } else if (e.type === 'focus') {
+                                if ($this.val() === '') {
+                                    label.removeClass('highlight');
+                                } else if ($this.val() !== '') {
+                                    label.addClass('highlight');
+                                }
+                            }
+                        });
+                        $('.tab a').on('click', function (e) {
+                            e.preventDefault();
+                            $(this).parent().addClass('active');
+                            $(this).parent().siblings().removeClass('active');
+                            target = $(this).attr('href');
+                            $('.tab-content > div').not(target).hide();
+                            $(target).fadeIn(600);
+                        });
+                    });
+
+
+                </script>
+
+
                 <div class="clearfix"> </div>
             </div>
             <div class="banner-top-grid">
@@ -89,65 +239,12 @@
         <!-- //container -->
     </div>
     <!--//baner-->
-    <div class="top-nav">
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="logo">
-                        <h1><a href="index.html">Edible</a></h1>
-                    </div>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-center">
-                        <li><a href="index" class="active">Home</a></li>
-                        <li><a href="about">About</a></li>					
-                        <li><a href="codes">Codes</a></li>
-                        <li><a href="#services" class="scroll">Services</a></li>
-                        <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="hvr-bounce-to-bottom"  href="gallery.html">Gallery1</a></li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown-submenu" role="button" aria-haspopup="true" aria-expanded="false">Gallery2<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a tabindex="-1" href="gallery">Gallery4</a></li>
-                                        <li><a href="gallery">Gallery5</a></li>
-                                        <li><a href="gallery">Gallery6</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="hvr-bounce-to-bottom" href="gallery">Gallery3</a></li>           
-                            </ul>
-                        </li>		
-                        <li><a href="contact">Contact</a></li>
-                        <li><a href="adminPanel">Admin Panel</a></li>
-                    </ul>	
-                    <div class="clearfix"> </div>
-                </div>
-            </div>	
-        </nav>		
-    </div>	
-    <!-- script-for sticky-nav -->
-    <script>
-        $(document).ready(function () {
-            var navoffeset = $(".top-nav").offset().top;
-            $(window).scroll(function () {
-                var scrollpos = $(window).scrollTop();
-                if (scrollpos >= navoffeset) {
-                    $(".top-nav").addClass("fixed");
-                } else {
-                    $(".top-nav").removeClass("fixed");
-                }
-            });
 
-        });
-    </script>
-    <!-- /script-for sticky-nav -->
+    <!--The navbar-header-->
+    <%@ include file="headerTwo.jsp" %>
+    <!--//The navbar-header-->
+
+
     <!--navigation-->
     <!-- banner-bottom -->
     <div class="welcome">

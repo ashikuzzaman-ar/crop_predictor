@@ -11,7 +11,7 @@
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- bootstrap-css -->
-        <link href="<c:url value="css/bootstrap.css" />" rel='stylesheet' type='text/css' />
+        <link href="<c:url value="css/bootstrap.min.css" />" rel='stylesheet' type='text/css' />
         <!-- //bootstrap-css -->
         <!-- css -->
         <link href="<c:url value="css/style.css" />" rel='stylesheet' type='text/css' />
@@ -23,8 +23,9 @@
         <!-- js -->
         <script src="<c:url value="js/jquery-1.11.1.min.js" />"></script> 
         <script src="<c:url value="js/modernizr.custom.js" />"></script> 
-        <script src="<c:url value="js/bootstrap.js" />"></script> 
+        <script src="<c:url value="js/bootstrap.min.js" />"></script> 
         <script src="<c:url value="js/responsiveslides.min.js" />"></script> 
+        <script src="<c:url value="js/jquery.scrollTo.min.js" />"></script> 
         <!-- //js -->	
         <!-- start-smoth-scrolling-->
         <script type="text/javascript">
