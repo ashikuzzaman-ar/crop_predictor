@@ -5,8 +5,12 @@
  */
 package com.controllers;
 
+import com.dao.SignUpDao;
+import com.models.SignUpInfo;
+import com.utils.GetBeans;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,6 +36,14 @@ public class Index {
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String doGETINDEX(Model model) {
         model.addAttribute("pageinfo", "index");
+        model.addAttribute("noLogin", "");
+        model.addAttribute("newFarmer", new SignUpInfo());
+        return "index";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String doGETLOGIN(Model model) {
+        model.addAttribute("pageinfo", "index");
         return "index";
     }
 
@@ -51,6 +63,25 @@ public class Index {
     public String doGETADMINPANEL(Model model) {
         model.addAttribute("pageinfo", "admin");
         return "adminPanel";
+    }
+
+    @RequestMapping(value = "signup", method = RequestMethod.POST)
+    public String doPOST1(@ModelAttribute("user") SignUpInfo user, Model model) {
+
+        user.setAuthority("ROLE_farmer");
+
+        GetBeans<SignUpDao> getBeans = new GetBeans<>();
+        getBeans.setFileName("dbBean.xml");
+
+        SignUpDao signUpDao = getBeans.getBean("signUpDao");
+
+        signUpDao.createUser(user);
+
+        model.addAttribute("pageinfo", "index");
+        model.addAttribute("noLogin", "");
+        model.addAttribute("newFarmer", new SignUpInfo());
+
+        return "index";
     }
 
 }

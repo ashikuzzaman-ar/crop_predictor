@@ -14,7 +14,9 @@
         <!--<intercept-url pattern="/**" access="isAuthenticated()"/>-->
         <!-- must have ROLE_user in database for this to work-->
         <!--<intercept-url pattern="/index" access="hasRole('user')"/>-->
-        <form-login />
+        <intercept-url pattern="/adminPanel" access="hasRole('officer')" />
+        <intercept-url pattern="/about" access="hasRole('farmer')" />
+        <form-login login-page="/login"/>
         <logout />
         
     </http>
