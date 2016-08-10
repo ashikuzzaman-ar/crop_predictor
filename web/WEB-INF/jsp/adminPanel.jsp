@@ -132,7 +132,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 this.value = 'Search...';
                             }">
                 </form>
-                
+
             </nav>
             <div id="page-wrapper">
                 <div class="graphs">
@@ -161,86 +161,86 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </div>
                                     </div>
                                     <div class="bs-example4" data-example-id="contextual-table">
-										
-										<form>
-										
-                                        <table class="table">
-										
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Element Name</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="success">
-                                                    <th scope="row">1</th>
-                                                    <td>Na</td>
-                                                    <td>
-														<input type="text" value="0.0" name="Na">
-													</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Ka</td>
-                                                    <td>	
-														<input type="text" value="0.0" name="Ka">
-													</td>
-                                                </tr>
-                                                <tr class="info">
-                                                    <th scope="row">3</th>
-                                                    <td>Mg</td>
-                                                    <td>
-														<input type="text" value="0.0" name="Mg">
-													</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">4</th>
-                                                    <td>Cl</td>
-                                                    <td>
-														<input type="text" value="0.0" name="Cl">
-													</td>
-                                                </tr>
-                                                <tr class="warning">
-                                                    <th scope="row">5</th>
-                                                    <td>N2</td>
-                                                    <td>
-														<input type="text" value="0.0" name="N2">
-													</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">6</th>
-                                                    <td>O2</td>
-                                                    <td>
-														<input type="text" value="0.0" name="O2">
-													</td>
-                                                </tr>
-                                                <tr class="danger">
-                                                    <th scope="row">7</th>
-                                                    <td>CO2</td>
-                                                    <td>
-														<input type="text" value="0.0" name="CO2">
-													</td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <th scope="row">8</th>
-                                                    <td>CH3</td>
-                                                    <td>
-														<input type="text" value="0.0" name="CH3">
-													</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">9</th>
-                                                    <td>PH4</td>
-                                                    <td>
-														<input type="text" value="0.0" name="PH4">
-													</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-										
-										</form>
+
+                                        <form>
+
+                                            <table class="table">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Element Name</th>
+                                                        <th>Percentage</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="success">
+                                                        <th scope="row">1</th>
+                                                        <td>Na</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="Na">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Ka</td>
+                                                        <td>	
+                                                            <input type="text" value="0.0" name="Ka">
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="info">
+                                                        <th scope="row">3</th>
+                                                        <td>Mg</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="Mg">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">4</th>
+                                                        <td>Cl</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="Cl">
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="warning">
+                                                        <th scope="row">5</th>
+                                                        <td>N2</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="N2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">6</th>
+                                                        <td>O2</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="O2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="danger">
+                                                        <th scope="row">7</th>
+                                                        <td>CO2</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="CO2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="active">
+                                                        <th scope="row">8</th>
+                                                        <td>CH3</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="CH3">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">9</th>
+                                                        <td>PH4</td>
+                                                        <td>
+                                                            <input type="text" value="0.0" name="PH4">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </form>
                                     </div>
                                     <div class="form-group">
                                         <label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>

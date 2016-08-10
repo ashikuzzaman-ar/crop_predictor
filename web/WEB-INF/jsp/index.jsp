@@ -77,7 +77,7 @@
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
-                                <div class="modal-content">
+                                <!--<div class="modal-content">-->
                                     <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
                                     <div class="form">
                                         <ul class="nav nav-pills nav-justified">
@@ -331,8 +331,8 @@
         <!-- /modal-->
         <script>
             $(document).ready(function () {
-                $("#myBtn").click(function () {
-                    $("#myModal").modal();
+                $("#login_signup_btn").click(function () {
+                    $("#login_signup_form").modal();
                 });
             });
         </script>
