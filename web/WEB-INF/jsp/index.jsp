@@ -190,7 +190,7 @@
 
 
                     <div class="clearfix"> </div>
-                </div>
+               
                 <div class="banner-top-grid">
                     <script src="js/responsiveslides.min.js"></script>
                     <script>
@@ -230,8 +230,9 @@
                     </div>
                 </div>
             </div>
-            <!-- //container -->
         </div>
+            <!-- //container -->
+        <!--</div>-->
         <!--//baner-->
         <div class="top-nav">
             <nav class="navbar navbar-default">
