@@ -136,7 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="adminPanle.jsp"><i class="fa fa-check-square-o nav_icon"></i>Farmer's Info</a>
+                                <a href="adminPanel"><i class="fa fa-check-square-o nav_icon"></i>Farmer's Info</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-envelope nav_icon"></i>Database's Info<span class="fa arrow"></span></a>
