@@ -8,11 +8,14 @@ package com.controllers;
 import com.dao.SignUpDao;
 import com.models.SignUpInfo;
 import com.utils.GetBeans;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -44,6 +47,7 @@ public class Index {
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String doGETLOGIN(Model model) {
         model.addAttribute("pageinfo", "index");
+        model.addAttribute("newFarmer", new SignUpInfo());
         return "index";
     }
 
@@ -66,7 +70,8 @@ public class Index {
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
-    public String doPOST1(@ModelAttribute("user") SignUpInfo user, Model model) {
+    public String doPOST1(@ModelAttribute("newFarmer") SignUpInfo user, Model model,
+            BindingResult result, RedirectAttributes ra) {
 
         user.setAuthority("ROLE_farmer");
 
@@ -75,13 +80,17 @@ public class Index {
 
         SignUpDao signUpDao = getBeans.getBean("signUpDao");
 
-        signUpDao.createUser(user);
+        try {
+            signUpDao.createUser(user);
+        } catch (DuplicateKeyException ex) {
+            result.rejectValue("username", "the user already exists");
+        }
 
         model.addAttribute("pageinfo", "index");
         model.addAttribute("noLogin", "");
         model.addAttribute("newFarmer", new SignUpInfo());
 
-        return "index";
+        return "redirect:/index";
     }
 
 }

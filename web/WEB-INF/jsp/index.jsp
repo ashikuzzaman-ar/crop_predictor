@@ -106,26 +106,26 @@
                                                         <label>
                                                             Khotiyan number<span class="req">*</span>
                                                         </label>
-                                                        <sf:input type="text" path="username" required="" autocomplete="off"/>
+                                                        <sf:input type="text" path="username" required="true" autocomplete="off"/>
                                                     </div>
                                                     <div class="field-wrap">
                                                         <label>
                                                             National ID number<span class="req">*</span>
                                                         </label>
-                                                        <sf:input type="text" path="password" required="" autocomplete="off" />
+                                                        <sf:input type="text" path="password" required="true" autocomplete="off" />
                                                     </div>
                                                     <div class="field-wrap ">
                                                         <label>
                                                             Amount of land<span class="req">*</span>
                                                         </label>
-                                                        <sf:input type="text" path="landAmount" required="" autocomplete="off"/>
+                                                        <sf:input type="number" path="landAmount" required="true" autocomplete="off"/>
                                                     </div>
 
                                                     <div class="field-wrap">
                                                         <label>
                                                             District<span class="req">*</span>
                                                         </label>
-                                                        <sf:input type="text" path="district" required="" autocomplete="off"/>
+                                                        <sf:input type="text" path="district" required="true" autocomplete="off"/>
                                                     </div>
                                                     <div class="field-wrap">
                                                         <label>
