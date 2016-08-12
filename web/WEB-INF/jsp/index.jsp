@@ -4,40 +4,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Edible a agriculture Category Flat bootstrap Responsive Website Template | Home :: Crop Precision</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Edible Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <!-- bootstrap-css -->
-        <link href="<c:url value="css/bootstrap.min.css" />" rel='stylesheet' type='text/css' />
-        <!-- //bootstrap-css -->
-        <!-- css -->
-        <link href="<c:url value="css/style.css" />" rel='stylesheet' type='text/css' />
-        <!-- //css -->
-        <!-- fonts -->
-        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-        <!--<script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1"></script>-->
-        <!-- js -->
-        <script src="<c:url value="js/jquery-1.11.1.min.js" />"></script> 
-        <script src="<c:url value="js/modernizr.custom.js" />"></script>
-        <script src="<c:url value="js/bootstrap.min.js" />"></script>
-        <!-- //js -->	
-        <!-- start-smoth-scrolling-->
-        <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $(".scroll").click(function (event) {
-                    event.preventDefault();
-
-                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-                });
-            });
-        </script>
-        <!--//end-smoth-scrolling-->
-    </head>
+<%@ include file="headerOne.jsp" %>
     <body>
 
         <!--baner-->
@@ -46,19 +13,26 @@
             <!-- container -->
             <div class="container">
                 <div class="banner-top">
-
+                    <div class="social">
+                        <ul>
+                            <li><a href="#" class="facebook"> </a></li>
+                            <li><a href="#" class="facebook twitter"> </a></li>
+                            <li><a href="#" class="facebook chrome"> </a></li>
+                            <li><a href="#" class="facebook dribbble"> </a></li>
+                        </ul>
+                    </div>
                     <div class="header-top-right">
                         <form>
                             <div class="clearfix"> </div>
                             <sec:authorize access="!isAuthenticated()">
                                 <div class="banner-button white-button" id="login_signup_btn">
-                                    <h3><a href="#">Log In or Sign Up</a></h3>
+                                    <h6><a href="#">Log In or Sign Up</a></h6>
                                 </div>
                             </sec:authorize>
 
                             <sec:authorize access="isAuthenticated()">
                                 <div class="banner-button white-button" id="login_signup_btn">
-                                    <h3><a href="logout">Logout</a></h3>
+                                    <h6><a href="logout">Logout</a></h6>
                                 </div>
                             </sec:authorize>
                         </form>
@@ -415,69 +389,6 @@
         </div>
         <!-- //new-bottom -->
         <!-- footer -->
-        <div class="footer">
-            <!-- container -->
-            <div class="container">
-                <div class="footer-grids">
-                    <div class="col-md-4 footer-grid">
-                        <div class="footer-grid-info">
-                            <h3>Popular</h3>
-                        </div>
-                        <div class="footer-grid-list">
-                            <ul>
-                                <li><a href="#">Proin placerat ipsum et rutrum</a></li>
-                                <li><a href="#">Vestibulum et ligula lectus	</a></li>
-                                <li><a href="#">Praesent in augue ut purus</a></li>
-                                <li><a href="#">Proin semper ut ligula sit amet</a></li>
-                                <li><a href="#">Vestibulum hendrerit lacus ut mi</a></li>
-                                <li><a href="#">Fusce sollicitudin nunc est</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4 footer-grid">
-                        <div class="footer-grid-info">
-                            <h3>Address</h3>
-                        </div>
-                        <div class="footer-grid-list">
-                            <h4>Headquarters</h4>
-                            <p>123 T. Globel Place.
-                                <span>CG 09-123</span>
-                                New York, Ba. 4567
-                            </p>
-                            <h4>Get In Touch</h4>
-                            <p>Telephone : +1 234 567 9871
-                                <span>FAX : +1 234 567 9871</span>
-                                E-mail : <a href="mailto:info@example.com">mail@example.com</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 footer-grid">
-                        <div class="footer-grid-info">
-                            <h3>Stay in touch</h3>
-                        </div>
-                        <div class="footer-grid-list">
-                            <form>
-                                <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                            this.value = 'Email';
-                                        }" required="">
-                                <input type="submit" value="Subscribe">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <!-- container -->
-        </div>
-        <!-- //footer -->
-        <!-- copyright -->
-        <div class="copyright">
-            <!-- container -->
-            <div class="container">
-                <p>© 2016 Studevs . All rights reserved | Design by <a href="http://studevs.com/">W3layouts</a></p>
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- //copyright -->
+        <%@ include file="footerOne.jsp" %>
     </body>
 </html>

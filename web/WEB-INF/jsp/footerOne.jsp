@@ -58,7 +58,7 @@
 <div class="copyright">
     <!-- container -->
     <div class="container">
-        <p>© 2015 Edible . All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        <p>© 2016 StuDevs. All rights reserved by |<a href="http://studevs.com/">StuDevsIT</a></p>
     </div>
     <!-- /container -->
 </div>
