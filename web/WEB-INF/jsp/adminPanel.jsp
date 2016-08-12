@@ -139,7 +139,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a href="adminPanel"><i class="fa fa-check-square-o nav_icon"></i>Farmer's Info</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-envelope nav_icon"></i>Database's Info<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-table nav_icon"></i>Database's Info<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="#">Update</a>
@@ -198,7 +198,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <tbody>
                                                     <tr class="success">
                                                         <th scope="row">1</th>
-                                                        <td>ph</td>
+                                                        <td>Ph</td>
                                                         <td>
                                                             <input type="text" value="0.0" name="Na">
                                                         </td>
@@ -312,7 +312,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <tbody>
                                                     <tr class="success">
                                                         <th scope="row">1</th>
-                                                        <td>ph</td>
+                                                        <td>Ph</td>
                                                         <td>
                                                             <input type="text" value="0.0" name="Na">
                                                         </td>
