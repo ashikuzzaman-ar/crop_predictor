@@ -19,21 +19,8 @@
                 <ul class="nav navbar-nav navbar-center">
                     <li><a id="index" href="index">Home</a></li>
                     <li><a id="about" href="about">About</a></li>					
-                    <li><a id="codes" href="codes">Codes</a></li>
                     <li><a  href="index" id="serviceslink">Services</a></li>
                     <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="hvr-bounce-to-bottom"  href="gallery">Gallery1</a></li>
-                            <li class="dropdown-submenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown-submenu" role="button" aria-haspopup="true" aria-expanded="false">Gallery2<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a tabindex="-1" href="gallery">Gallery4</a></li>
-                                    <li><a href="gallery">Gallery5</a></li>
-                                    <li><a href="gallery">Gallery6</a></li>
-                                </ul>
-                            </li>
-                            <li><a id="gallery" class="hvr-bounce-to-bottom" href="gallery">Gallery3</a></li>           
-                        </ul>
                     </li>		
                     <li><a id="contact" href="contact">Contact</a></li>
                     <li><a id="admin" href="adminPanel">Admin Panel</a></li>

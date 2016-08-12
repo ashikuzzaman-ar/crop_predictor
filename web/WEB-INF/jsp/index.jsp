@@ -20,12 +20,7 @@
         <!-- //css -->
         <!-- fonts -->
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-        <!-- //fonts -->
-        <!-- modal -->
-        <!--<link rel="stylesheet" href="<c:url value="css/bootstrap.min.css" />">-->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
-        <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-        <script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1"></script>
+        <!--<script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1"></script>-->
         <!-- js -->
         <script src="<c:url value="js/jquery-1.11.1.min.js" />"></script> 
         <script src="<c:url value="js/modernizr.custom.js" />"></script>
@@ -54,18 +49,16 @@
 
                     <div class="header-top-right">
                         <form>
-                            <input type="text" placeholder="Search" required="">
-                            <input type="submit" value="">
                             <div class="clearfix"> </div>
                             <sec:authorize access="!isAuthenticated()">
                                 <div class="banner-button white-button" id="login_signup_btn">
-                                    <h6><a href="#">Log In or Sign Up</a></h6>
+                                    <h3><a href="#">Log In or Sign Up</a></h3>
                                 </div>
                             </sec:authorize>
 
                             <sec:authorize access="isAuthenticated()">
                                 <div class="banner-button white-button" id="login_signup_btn">
-                                    <h6><a href="logout">Logout</a></h6>
+                                    <h3><a href="logout">Logout</a></h3>
                                 </div>
                             </sec:authorize>
                         </form>
@@ -78,98 +71,98 @@
 
                                 <!-- Modal content-->
                                 <!--<div class="modal-content">-->
-                                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                                    <div class="form">
-                                        <ul class="nav nav-pills nav-justified">
-                                            <li class="tab active" 
-                                                style="font-size:2rem;
-                                                font-weight:600;
-                                                text-transform:uppercase;
-                                                letter-spacing:.1em;
-                                                background:#1ab188;
-                                                color:#13232f" ><a style="color: #ffffff" href="#login">Log In</a></li>
-                                            <li class="tab" 
-                                                style="font-size:2rem;
-                                                font-weight:600;
-                                                text-transform:uppercase;
-                                                letter-spacing:.1em;
-                                                background:#1ab188;
-                                                color:#13232f"><a style="color: #ffffff" href="#signup">Sign Up</a></li>
-                                        </ul>
+                                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <div class="form">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li class="tab active" 
+                                            style="font-size:2rem;
+                                            font-weight:600;
+                                            text-transform:uppercase;
+                                            letter-spacing:.1em;
+                                            background:#1ab188;
+                                            color:#13232f" ><a style="color: #ffffff" href="#login">Log In</a></li>
+                                        <li class="tab" 
+                                            style="font-size:2rem;
+                                            font-weight:600;
+                                            text-transform:uppercase;
+                                            letter-spacing:.1em;
+                                            background:#1ab188;
+                                            color:#13232f"><a style="color: #ffffff" href="#signup">Sign Up</a></li>
+                                    </ul>
 
-                                        <div class="tab-content">
-                                            <div id="signup" style="display: none;">   
-                                                <h2>Sign Up Free in "Crop Precision"</h2>
-                                                <sf:form action="signup" method="POST" modelAttribute="newFarmer">
-                                                    <!--method="post"-->
-                                                    <div class="field-wrap">
-                                                        <label>
-                                                            Khotiyan number<span class="req">*</span>
-                                                        </label>
-                                                        <sf:input type="text" path="username" required="true" autocomplete="off"/>
-                                                    </div>
-                                                    <div class="field-wrap">
-                                                        <label>
-                                                            National ID number<span class="req">*</span>
-                                                        </label>
-                                                        <sf:input type="text" path="password" required="true" autocomplete="off" />
-                                                    </div>
-                                                    <div class="field-wrap ">
-                                                        <label>
-                                                            Amount of land<span class="req">*</span>
-                                                        </label>
-                                                        <sf:input type="number" path="landAmount" required="true" autocomplete="off"/>
-                                                    </div>
+                                    <div class="tab-content">
+                                        <div id="signup" style="display: none;">   
+                                            <h2>Sign Up Free in "Crop Precision"</h2>
+                                            <sf:form action="signup" method="POST" modelAttribute="newFarmer">
+                                                <!--method="post"-->
+                                                <div class="field-wrap">
+                                                    <label>
+                                                        Khotiyan number<span class="req">*</span>
+                                                    </label>
+                                                    <sf:input type="text" path="username" required="true" autocomplete="off"/>
+                                                </div>
+                                                <div class="field-wrap">
+                                                    <label>
+                                                        National ID number<span class="req">*</span>
+                                                    </label>
+                                                    <sf:input type="text" path="password" required="true" autocomplete="off" />
+                                                </div>
+                                                <div class="field-wrap ">
+                                                    <label>
+                                                        Amount of land<span class="req">*</span>
+                                                    </label>
+                                                    <sf:input type="number" path="landAmount" required="true" autocomplete="off"/>
+                                                </div>
 
-                                                    <div class="field-wrap">
-                                                        <label>
-                                                            District<span class="req">*</span>
-                                                        </label>
-                                                        <sf:input type="text" path="district" required="true" autocomplete="off"/>
-                                                    </div>
-                                                    <div class="field-wrap">
-                                                        <label>
-                                                            Mobile No.<span class="req">*</span>
-                                                        </label>
-                                                        <sf:input type="text" path="mobileNumber" required="" autocomplete="off"/>
-                                                    </div>
+                                                <div class="field-wrap">
+                                                    <label>
+                                                        District<span class="req">*</span>
+                                                    </label>
+                                                    <sf:input type="text" path="district" required="true" autocomplete="off"/>
+                                                </div>
+                                                <div class="field-wrap">
+                                                    <label>
+                                                        Mobile No.<span class="req">*</span>
+                                                    </label>
+                                                    <sf:input type="text" path="mobileNumber" required="" autocomplete="off"/>
+                                                </div>
 
-                                                    <button type="submit" class="button button-block">Sign Up</button>
+                                                <button type="submit" class="button button-block">Sign Up</button>
 
-                                                </sf:form>
+                                            </sf:form>
 
-                                            </div>
+                                        </div>
 
-                                            <div id="login" style="display: block;">   
-                                                <h1>Welcome to "Crop Precision"</h1>
-                                                <form action="login" method="POST">
-                                                    <!--method="post"-->
-                                                    <div class="field-wrap">
-                                                        <label>
-                                                            Khotiyan number<span class="req">*</span>
-                                                        </label>
-                                                        <input type="text" name="username" required="" autocomplete="off">
-                                                    </div>
+                                        <div id="login" style="display: block;">   
+                                            <h1>Welcome to "Crop Precision"</h1>
+                                            <form action="login" method="POST">
+                                                <!--method="post"-->
+                                                <div class="field-wrap">
+                                                    <label>
+                                                        Khotiyan number<span class="req">*</span>
+                                                    </label>
+                                                    <input type="text" name="username" required="" autocomplete="off">
+                                                </div>
 
-                                                    <div class="field-wrap">
-                                                        <label>
-                                                            Password<span class="req">*</span>
-                                                        </label>
-                                                        <input type="password" name="password" required="" autocomplete="off">
-                                                    </div>
+                                                <div class="field-wrap">
+                                                    <label>
+                                                        Password<span class="req">*</span>
+                                                    </label>
+                                                    <input type="password" name="password" required="" autocomplete="off">
+                                                </div>
 
-                                                    <!--<p class="forgot"><a href="#">Forgot Password?</a></p>-->
+                                                <!--<p class="forgot"><a href="#">Forgot Password?</a></p>-->
 
-                                                    <button  name="login" type="submit" class="button button-block">Get Started</button>
-                                                </form>
+                                                <button  name="login" type="submit" class="button button-block">Get Started</button>
+                                            </form>
 
-                                            </div>
+                                        </div>
 
-                                        </div><!-- tab-content -->
-                                    </div>
+                                    </div><!-- tab-content -->
                                 </div>
-                            </div> 
-                        </div>
+                            </div>
+                        </div> 
+
 
                         <!--for login from security-->
                         <%if (request.getAttribute("noLogin") == null) {%>
@@ -187,43 +180,17 @@
                         </script>
 
                     </sec:authorize>
+                </div>
 
 
-                    <div class="clearfix"> </div>
-               
+                <div class="clearfix"> </div>
+
                 <div class="banner-top-grid">
-                    <script src="js/responsiveslides.min.js"></script>
-                    <script>
-                            // You can also use "$(window).load(function() {"
-                            $(function () {
-                                // Slideshow 4
-                                $("#slider3").responsiveSlides({
-                                    auto: false,
-                                    pager: true,
-                                    nav: false,
-                                    speed: 500,
-                                    namespace: "callbacks",
-                                    before: function () {
-                                        $('.events').append("<li>before event fired.</li>");
-                                    },
-                                    after: function () {
-                                        $('.events').append("<li>after event fired.</li>");
-                                    }
-                                });
-                            });
-                    </script>
                     <div  id="top" class="callbacks_container-wrap">
                         <ul class="rslides" id="slider3">
                             <li>
                                 <div class="banner-info">
-                                    <h3>Lorem <span>ipsum</span> dolor consectetur</h3>
-                                    <h5>molestie elit condi</h5>
-                                    <p>Sed dignissim augue ut ex cursus, vel molestie elit condimentum mattis nec ipsum morbi quis tinci condimentum mattis nec ipsum dunt urna eget laoreet felis.</p>
-                                    <div class="banner-buttons">
-                                        <div class="banner-button white-button">
-                                            <a href="#">Click</a>
-                                        </div>
-                                    </div>
+                                    <h3>Let's <span>accelerate</span> the agricultarul growth of Bangladesh</h3>
                                 </div>
                             </li>
                         </ul>
@@ -231,7 +198,7 @@
                 </div>
             </div>
         </div>
-            <!-- //container -->
+        <!-- //container -->
         <!--</div>-->
         <!--//baner-->
         <div class="top-nav">
@@ -244,9 +211,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <div class="logo">
-                            <h1><a href="index">Edible</a></h1>
-                        </div>
+
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -254,21 +219,7 @@
                             <li><a href="index" class="active">Home</a></li>
                             <!--<li><a href="profile/index.jsp">Profile</a></li>-->
                             <li><a href="about">About</a></li>
-                            <li><a href="#services" class="scroll">Services</a></li>
-                            <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="hvr-bounce-to-bottom"  href="gallery">Gallery1</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown-submenu" role="button" aria-haspopup="true" aria-expanded="false">Gallery2<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="gallery">Gallery4</a></li>
-                                            <li><a href="gallery">Gallery5</a></li>
-                                            <li><a href="gallery">Gallery6</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="hvr-bounce-to-bottom" href="gallery">Gallery3</a></li>           
-                                </ul>
-                            </li>		
+                            <li><a href="#services" class="scroll">Services</a></li>		
                             <li><a href="contact">Contact</a></li>
                             <li><a href="adminPanel">Admin Panel</a></li>
                         </ul>	
@@ -341,12 +292,8 @@
         <!-- banner-bottom -->
         <div class="welcome">
             <div class="welcome-left">
-                <h3>Hello and welcome!</h3>
-                <h4>Meet the largest independent mining company</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate sem vitae tortor venenatis 
-                    elementum. Suspendisse Pellentesque dignissim sagittis pharetra. Nulla blandit ac nibh rutrum tincidunt. Suspendisse imperdiet velit fermentum mauris arcu, eu hendrerit felis gravida at. Pellentesque habitant morbi 
-                    tristique senectus et netus et malesuada fames ac turpis egestas.
-                </p>
+                <h3>Welcome to Crop Predictor</h3>
+                <h4>A much needed web solution for farmers of BD</h4>
             </div>
             <div class="welcome-right">
 
@@ -527,7 +474,7 @@
         <div class="copyright">
             <!-- container -->
             <div class="container">
-                <p>© 2015 Edible . All rights reserved | Design by <a href="http://studevs.com/">W3layouts</a></p>
+                <p>© 2016 Studevs . All rights reserved | Design by <a href="http://studevs.com/">W3layouts</a></p>
             </div>
             <!-- /container -->
         </div>
