@@ -299,39 +299,7 @@
         </div>
         <!-- //new -->
         <!-- services -->
-        <div id="services" class="services">
-            <!-- container -->
-            <div class="container">
-                <div class="services-info">
-                    <h3>Services</h3>
-                </div>
-                <div class="services-grids">
-                    <div class="col-md-4 services-grid">
-                        <div class="services-icon">
-                            <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                        </div>
-                        <h4>Duis eu malesuada erat lacinia lacus</h4>
-                        <p>Quisque ac sem vitae mauris lacinia hendrerit nec in risus. Vivamus sit amet dignissim ex, eu vulputate velit. Sed in viverra lacus</p>
-                    </div>
-                    <div class="col-md-4 services-grid">
-                        <div class="services-icon">
-                            <span class="glyphicon glyphicon-asterisk glyphicon-check" aria-hidden="true"></span>
-                        </div>
-                        <h4>Duis eu malesuada erat lacinia lacus</h4>
-                        <p>Quisque ac sem vitae mauris lacinia hendrerit nec in risus. Vivamus sit amet dignissim ex, eu vulputate velit. Sed in viverra lacus</p>
-                    </div>
-                    <div class="col-md-4 services-grid">
-                        <div class="services-icon">
-                            <span class="glyphicon glyphicon-asterisk glyphicon-time" aria-hidden="true"></span>
-                        </div>
-                        <h4>Duis eu malesuada erat lacinia lacus</h4>
-                        <p>Quisque ac sem vitae mauris lacinia hendrerit nec in risus. Vivamus sit amet dignissim ex, eu vulputate velit. Sed in viverra lacus</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <!-- //container -->
-        </div>
+        <%@ include file="services.jsp" %>
         <!-- services -->
         <!-- new-bottom -->
         <div class="new-bottom">
