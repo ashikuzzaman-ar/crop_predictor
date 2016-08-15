@@ -66,6 +66,7 @@ public class Index {
     @RequestMapping(value = "adminPanel", method = RequestMethod.GET)
     public String doGETADMINPANEL(Model model) {
         model.addAttribute("pageinfo", "admin");
+        model.addAttribute("farmerInfoInput", " ");
         return "adminPanel";
     }
 

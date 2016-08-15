@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -33,17 +34,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div id="wrapper">
             <!-- Navigation -->
             <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.jsp">Crop Predictor</a>
-                </div>
+                <!--                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="index.jsp">Crop Predictor</a>
+                                </div>-->
                 <!-- /.navbar-header -->
-              
+
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -54,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a href="#"><i class="fa fa-table nav_icon"></i>Database's Info<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Update</a>
+                                        <a href="updateCropInfo">Update</a>
                                     </li>
                                     <li>
                                         <a href="#">Delete</a>
@@ -75,12 +76,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="tab-content">
                             <div class="tab-pane active" id="horizontal-form">
                                 <form class="form-horizontal">
+
+                                    <!--START OF FARMER INPUT IF-->
+                                    <%if (request.getAttribute("farmerInfoInput") != null) {%>
                                     <div class="form-group">
                                         <label for="focusedinput" class="col-sm-2 control-label">Budget</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control1" id="focusedinput" placeholder="Farmer's budget in TK.">
                                         </div>
                                     </div>
+
+
                                     <div class="form-group">
                                         <label for="checkbox" class="col-sm-2 control-label">Farming Sessions</label>
                                         <div class="col-sm-8">
@@ -89,369 +95,563 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <div class="checkbox-inline1"><label><input type="checkbox"> Fall</label></div>
                                         </div>
                                     </div>
+
+
                                     <div class="form-group has-success" style="font-size: 28px">
                                         <div class="col-sm-8">
                                             <input disabled="" type="text" class="form-control1" id="disabledinput" placeholder="Fill up the form according to the soil test">
                                         </div>
                                     </div>
+
                                     <div class="bs-example4" data-example-id="contextual-table">
-
-                                        <form>
-
-                                            <table class="table table-bordered">
-
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Element Name</th>
-                                                        <th>Percentage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="success">
-                                                        <th scope="row">1</th>
-                                                        <td>Ph</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="Na">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>K</td>
-                                                        <td>	
-                                                            <input type="text" value="0.0" name="Ka">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="info">
-                                                        <th scope="row">3</th>
-                                                        <td>Ca</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="Mg">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">4</th>
-                                                        <td>Mg</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="Cl">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="warning">
-                                                        <th scope="row">5</th>
-                                                        <td>S</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="N2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">6</th>
-                                                        <td>Pb</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="O2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="danger">
-                                                        <th scope="row">7</th>
-                                                        <td>Al</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CO2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="active">
-                                                        <th scope="row">8</th>
-                                                        <td>NO3-N</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CH3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="success">
-                                                        <th scope="row">9</th>
-                                                        <td>Zn</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CH3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">10</th>
-                                                        <td>Cu</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CH3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="info">
-                                                        <th scope="row">11</th>
-                                                        <td>H2O</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="PH4">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">12</th>
-                                                        <td>O2</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="PH4">
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <button type="button" class="btn btn-success warning_2">Submit</button>
-                                    </div>
-                                    <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-                                        <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="dropdown">
-                                                <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-                                                    <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
-                                                    <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <div class="panel-body no-padding">
-                                            <h2>Update "Crop's" info</h2>
-                                            <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
-                                                <span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
-
-                                        </div>
-                                        <div class="panel-body no-padding" style="display: block;">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr class="warning">
-                                                        <th>#</th>
-                                                        <th>Element Name</th>
-                                                        <th>Percentage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="success">
-                                                        <th scope="row">1</th>
-                                                        <td>Ph</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="Na">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>K</td>
-                                                        <td>	
-                                                            <input type="text" value="0.0" name="Ka">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="info">
-                                                        <th scope="row">3</th>
-                                                        <td>Ca</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="Mg">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">4</th>
-                                                        <td>Mg</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="Cl">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="warning">
-                                                        <th scope="row">5</th>
-                                                        <td>S</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="N2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">6</th>
-                                                        <td>Pb</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="O2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="danger">
-                                                        <th scope="row">7</th>
-                                                        <td>Al</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CO2">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="active">
-                                                        <th scope="row">8</th>
-                                                        <td>NO3-N</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CH3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="success">
-                                                        <th scope="row">9</th>
-                                                        <td>Zn</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CH3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">10</th>
-                                                        <td>Cu</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="CH3">
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="info">
-                                                        <th scope="row">11</th>
-                                                        <td>H2O</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="PH4">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">12</th>
-                                                        <td>O2</td>
-                                                        <td>
-                                                            <input type="text" value="0.0" name="PH4">
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <button type="button" class="btn btn-success warning_2">Update</button>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-                                        <div class="panel-heading">
-                                            <h2>Select & delete Crop's info</h2>
-                                            <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
-                                                <span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
-
-                                        </div>
-                                        <div class="panel-body no-padding" style="display: block;">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Select</th>
-                                                        <th>#</th>
-                                                        <th>Crop Name</th>
-                                                        <th>Ph</th>
-                                                        <th>K</th>
-                                                        <th>Ca</th>
-                                                        <th>Mg</th>
-                                                        <th>S</th>
-                                                        <th>Pb</th>
-                                                        <th>Al</th>
-                                                        <th>NO3-N</th>
-                                                        <th>Zn</th>
-                                                        <th>Cu</th>
-                                                        <th>H2O</th>
-                                                        <th>O2</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="success">
-                                                        <td class="hidden-xs">
-                                                            <input type="checkbox" class="checkbox">
-                                                        </td>
-                                                        <th scope="row">1</th>
-                                                        <td>iri1</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="hidden-xs">
-                                                            <input type="checkbox" class="checkbox">
-                                                        </td>
-                                                        <th scope="row">2</th>
-                                                        <td>iri2</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                    </tr>
-                                                    <tr class="info">
-                                                        <td class="hidden-xs">
-                                                            <input type="checkbox" class="checkbox">
-                                                        </td>
-                                                        <th scope="row">3</th>
-                                                        <td>iri3</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="hidden-xs">
-                                                            <input type="checkbox" class="checkbox">
-                                                        </td>
-                                                        <th scope="row">4</th>
-                                                        <td>iri4</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                    </tr>
-                                                    <tr class="warning">
-                                                        <td class="hidden-xs">
-                                                            <input type="checkbox" class="checkbox">
-                                                        </td>
-                                                        <th scope="row">5</th>
-                                                        <td>iri5</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                        <td>0.0</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <button type="button" class="btn btn-success warning_2">Delete</button>
-                                        </div>
-                                    </div>
+                                        <%}%>
+                                        <!--END OF FARMER INPUT IF-->
                                 </form>
+
+
+
+                                <!--Input on behalf of farmer-->
+
+                                <%if (request.getAttribute("farmerInfoInput") != null) {%>
+
+                                <form method="POST" action="input_element_aftertest">
+                                    <label for="focusedinput" class="col-sm-2 control-label">Khotiyan Number</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="khotiyanNumberSoil" class="form-control1" id="focusedinput" placeholder="Khotiyan Number">
+                                    </div>
+                                    <br><br><br><br>
+
+                                    <table class="table table-bordered">
+
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Element Name</th>
+                                                <th>Percentage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="success">
+                                                <th scope="row">1</th>
+                                                <td>C</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="C">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>H</td>
+                                                <td>	
+                                                    <input type="text" value="0.0" name="H">
+                                                </td>
+                                            </tr>
+                                            <tr class="info">
+                                                <th scope="row">3</th>
+                                                <td>O</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="O">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>N</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="N">
+                                                </td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <th scope="row">5</th>
+                                                <td>P</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="P">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td>K</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="K">
+                                                </td>
+                                            </tr>
+                                            <tr class="danger">
+                                                <th scope="row">7</th>
+                                                <td>S</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="S">
+                                                </td>
+                                            </tr>
+                                            <tr class="active">
+                                                <th scope="row">8</th>
+                                                <td>Ca</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Ca">
+                                                </td>
+                                            </tr>
+                                            <tr class="success">
+                                                <th scope="row">9</th>
+                                                <td>Mg</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Mg">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">10</th>
+                                                <td>Fe</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Fe">
+                                                </td>
+                                            </tr>
+                                            <tr class="info">
+                                                <th scope="row">11</th>
+                                                <td>Mo</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Mo">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">12</th>
+                                                <td>B</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="B">
+                                                </td>
+                                            </tr>
+                                            <tr class="success">
+                                                <th scope="row">13</th>
+                                                <td>Cu</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Cu">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">14</th>
+                                                <td>Mn</td>
+                                                <td>	
+                                                    <input type="text" value="0.0" name="Mn">
+                                                </td>
+                                            </tr>
+                                            <tr class="info">
+                                                <th scope="row">15</th>
+                                                <td>Na</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Na">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">16</th>
+                                                <td>Zn</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Zn">
+                                                </td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <th scope="row">17</th>
+                                                <td>Ni</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Ni">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">18</th>
+                                                <td>Cl</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Cl">
+                                                </td>
+                                            </tr>
+                                            <tr class="danger">
+                                                <th scope="row">19</th>
+                                                <td>Co</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Co">
+                                                </td>
+                                            </tr>
+                                            <tr class="active">
+                                                <th scope="row">20</th>
+                                                <td>Al</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Al">
+                                                </td>
+                                            </tr>
+                                            <tr class="success">
+                                                <th scope="row">21</th>
+                                                <td>Si</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Si">
+                                                </td>
+                                            </tr>
+                                            <tr class="active">
+                                                <th scope="row">22</th>
+                                                <td>V</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="V">
+                                                </td>
+                                            </tr>
+                                            <tr class="success">
+                                                <th scope="row">23</th>
+                                                <td>Se</td>
+                                                <td>
+                                                    <input type="text" value="0.0" name="Se">
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <input type="submit" value="SUBMIT">
+                                </form>
+
                             </div>
+                            <%}%>
+                            <!--END FARMER INPUT-->
+
+                            <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+                                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="dropdown">
+                                        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                                            <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
+                                            <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="panel-body no-padding">
+                                    <h2>Update "Crop's" info</h2>
+                                    <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
+                                        <span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+
+                                </div>
+
+                                <!--START CROP UPDATE-->
+                                <%if (request.getAttribute("cropForUpdate") != null) {%>
+                                <sf:form modelAttribute="cropForUpdate">
+                                    <div class="panel-body no-padding" style="display: block;">
+
+                                        <label for="focusedinput" class="col-sm-2 control-label">Crop Name</label>
+                                        <div class="col-sm-8">
+                                            <sf:input type="text" path="crop_name" cssClass="form-control1" id="focusedinput" placeholder="Crop Name"/>
+                                        </div>
+                                        <br><br><br><br>
+
+                                        <table class="table table-bordered">
+
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Element Name</th>
+                                                    <th>Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="success">
+                                                    <th scope="row">1</th>
+                                                    <td>C</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="C"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>H</td>
+                                                    <td>	
+                                                        <sf:input type="text"  path="H"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="info">
+                                                    <th scope="row">3</th>
+                                                    <td>O</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="O"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>N</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="N"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <th scope="row">5</th>
+                                                    <td>P</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="P"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">6</th>
+                                                    <td>K</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="K"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="danger">
+                                                    <th scope="row">7</th>
+                                                    <td>S</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="S"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th scope="row">8</th>
+                                                    <td>Ca</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Ca"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <th scope="row">9</th>
+                                                    <td>Mg</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Mg"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">10</th>
+                                                    <td>Fe</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Fe"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="info">
+                                                    <th scope="row">11</th>
+                                                    <td>Mo</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Mo"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">12</th>
+                                                    <td>B</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="B"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <th scope="row">13</th>
+                                                    <td>Cu</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Cu"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">14</th>
+                                                    <td>Mn</td>
+                                                    <td>	
+                                                        <sf:input type="text"  path="Mn"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="info">
+                                                    <th scope="row">15</th>
+                                                    <td>Na</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Na"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">16</th>
+                                                    <td>Zn</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Zn"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <th scope="row">17</th>
+                                                    <td>Ni</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Ni"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">18</th>
+                                                    <td>Cl</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Cl"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="danger">
+                                                    <th scope="row">19</th>
+                                                    <td>Co</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Co"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th scope="row">20</th>
+                                                    <td>Al</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Al"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <th scope="row">21</th>
+                                                    <td>Si</td>
+                                                    <td>
+                                                        <sf:input type="text"  path="Si"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th scope="row">22</th>
+                                                    <td>V</td>
+                                                    <td>
+                                                        <sf:input type="text" path="V"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <th scope="row">23</th>
+                                                    <td>Se</td>
+                                                    <td>
+                                                        <sf:input type="text" path="Se"/>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <button type="button" class="btn btn-success warning_2">Update</button>
+                                    </div>
+                                </sf:form>
+                                <%}%>
+                                <!--END CROP UPDATE-->
+
+                            </div>
+                            <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+                                <div class="panel-heading">
+                                    <h2>Select & delete Crop's info</h2>
+                                    <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
+                                        <span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+
+                                </div>
+                                <div class="panel-body no-padding" style="display: block;">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Select</th>
+                                                <th>#</th>
+                                                <th>Crop Name</th>
+                                                <th>Ph</th>
+                                                <th>K</th>
+                                                <th>Ca</th>
+                                                <th>Mg</th>
+                                                <th>S</th>
+                                                <th>Pb</th>
+                                                <th>Al</th>
+                                                <th>NO3-N</th>
+                                                <th>Zn</th>
+                                                <th>Cu</th>
+                                                <th>H2O</th>
+                                                <th>O2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="success">
+                                                <td class="hidden-xs">
+                                                    <input type="checkbox" class="checkbox">
+                                                </td>
+                                                <th scope="row">1</th>
+                                                <td>iri1</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="hidden-xs">
+                                                    <input type="checkbox" class="checkbox">
+                                                </td>
+                                                <th scope="row">2</th>
+                                                <td>iri2</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr class="info">
+                                                <td class="hidden-xs">
+                                                    <input type="checkbox" class="checkbox">
+                                                </td>
+                                                <th scope="row">3</th>
+                                                <td>iri3</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="hidden-xs">
+                                                    <input type="checkbox" class="checkbox">
+                                                </td>
+                                                <th scope="row">4</th>
+                                                <td>iri4</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <td class="hidden-xs">
+                                                    <input type="checkbox" class="checkbox">
+                                                </td>
+                                                <th scope="row">5</th>
+                                                <td>iri5</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                                <td>0.0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn btn-success warning_2">Delete</button>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!-- /#page-wrapper -->
             </div>
-            <!-- /#wrapper -->
-            <!-- Nav CSS -->
-            <link href="css/custom.css" rel="stylesheet">
-            <!-- Metis Menu Plugin JavaScript -->
-            <script src="<c:url value="js/metisMenu.min.js" />"></script>
-            <script src="<c:url value="js/custom.js" />"></script>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- Nav CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="<c:url value="js/metisMenu.min.js" />"></script>
+        <script src="<c:url value="js/custom.js" />"></script>
     </body>
 </html>
