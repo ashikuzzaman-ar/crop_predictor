@@ -9,7 +9,7 @@
 
         <div class="w3-row-padding w3-margin-top">
 
-            <a href="cropPrediction.jsp"><div class="w3-third">
+            <a href="cropPrediction"><div class="w3-third">
                     <div class="card-1">
                         <div class="services-grid">
                             <h4 class="bold-700">Crop Prediction</h4>
@@ -18,7 +18,7 @@
                             <div class="services-grid">
                                 <div class="services-icon">
                                     <span class="glyphicon glyphicon-asterisk glyphicon-time" aria-hidden="true"></span>
-                                 </div>
+                                </div>
                                 <h4>Duis eu malesuada erat lacinia lacus</h4>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             <div class="services-grid">
                                 <div class="services-icon">
                                     <span class="glyphicon glyphicon-asterisk glyphicon-check" aria-hidden="true"></span>
-                                    </div>
+                                </div>
                                 <h4>Duis eu malesuada erat lacinia lacus</h4>
                             </div>
                         </div>

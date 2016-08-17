@@ -34,17 +34,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div id="wrapper">
             <!-- Navigation -->
             <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <!--                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="index.jsp">Crop Predictor</a>
-                                </div>-->
-                <!-- /.navbar-header -->
-
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -303,6 +292,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <!--END FARMER INPUT-->
 
                             <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+                                <!--START CROP UPDATE-->
+                                <%if (request.getAttribute("cropForUpdate") != null) {%>
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="dropdown">
                                         <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
@@ -319,8 +310,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 </div>
 
-                                <!--START CROP UPDATE-->
-                                <%if (request.getAttribute("cropForUpdate") != null) {%>
+
                                 <sf:form modelAttribute="cropForUpdate">
                                     <div class="panel-body no-padding" style="display: block;">
 
