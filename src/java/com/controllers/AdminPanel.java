@@ -105,7 +105,13 @@ public class AdminPanel {
         if (actionType.equals("update")) {
             dao.updateByname(crop);
         } else {
-            dao.insert(crop);
+            try {
+                dao.insert(crop);
+            } catch (DuplicateKeyException e) {
+                dao.deleteByName(crop);
+                dao.insert(crop);
+            }
+
         }
 
         return "redirect:/updateCropInfo";

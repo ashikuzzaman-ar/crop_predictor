@@ -17,6 +17,8 @@ public class DummyInsertDao extends Parent_Dao {
 
     public void insertDummy(CropElementPercentage crop) {
 
+        //Here two params may be replaced with only use
+        //Possible redundant MapSqlParameterSource
         MapSqlParameterSource paramTwo = new MapSqlParameterSource("cropName", crop.getCrop_name());
         String sql;
 

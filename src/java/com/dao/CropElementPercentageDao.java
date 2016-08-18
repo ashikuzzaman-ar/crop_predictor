@@ -41,12 +41,27 @@ public class CropElementPercentageDao extends Parent_Dao {
 
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(crop);
 
+        //This query may be placed inside CropNameDao
         String sql = "insert into crop_name(cropName) values(:crop_name)";
 
         template.update(sql, param);
 
         sql = "insert into crop_element_percentage(crop_name,C,H,O,N,P,K,S,Ca,Mg,Fe,Mo,B,Cu,Mn,Na,Zn,Ni,Cl,Co,Al,Si,V,Se) "
                 + "values(:crop_name,:C,:H,:O,:N,:P,:K,:S,:Ca,:Mg,:Fe,:Mo,:B,:Cu,:Mn,:Na,:Zn,:Ni,:Cl,:Co,:Al,:Si,:V,:Se)";
+
+        template.update(sql, param);
+
+    }
+
+    public void deleteByName(CropElementPercentage crop) {
+
+        String sql = "Delete from crop_element_percentage where crop_name=:crop_name";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(crop);
+
+        template.update(sql, param);
+
+        //This query may be placed inside CropNameDao
+        sql = "Delete from crop_name where cropName=:crop_name";
 
         template.update(sql, param);
 
