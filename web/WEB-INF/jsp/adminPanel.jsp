@@ -290,7 +290,7 @@
 
                                     </tbody>
                                 </table>
-                                <input type="submit" value="SUBMIT">
+                                <button type="submit" class="btn btn-success warning_2">Submit</button>
                             </form>
 
                         </div>
