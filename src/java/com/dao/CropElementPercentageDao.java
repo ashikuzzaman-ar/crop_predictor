@@ -37,4 +37,19 @@ public class CropElementPercentageDao extends Parent_Dao {
 
     }
 
+    public void insert(CropElementPercentage crop) {
+
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(crop);
+
+        String sql = "insert into crop_name(cropName) values(:crop_name)";
+
+        template.update(sql, param);
+
+        sql = "insert into crop_element_percentage(crop_name,C,H,O,N,P,K,S,Ca,Mg,Fe,Mo,B,Cu,Mn,Na,Zn,Ni,Cl,Co,Al,Si,V,Se) "
+                + "values(:crop_name,:C,:H,:O,:N,:P,:K,:S,:Ca,:Mg,:Fe,:Mo,:B,:Cu,:Mn,:Na,:Zn,:Ni,:Cl,:Co,:Al,:Si,:V,:Se)";
+
+        template.update(sql, param);
+
+    }
+
 }

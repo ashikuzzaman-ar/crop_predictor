@@ -7,6 +7,7 @@ package com.dao;
 
 import com.models.Khotiyan_Element_Percentage;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
 /**
  *
@@ -21,6 +22,15 @@ public class KhotiyanElementPercentageDao extends Parent_Dao {
                 + "values(:khotiyanNumberSoil,:C,:H,:O,:N,:P,:K,:S,:Ca,:Mg,:Fe,:Mo,:B,:Cu,:Mn,:Na,:Zn,:Ni,:Cl,:Co,:Al,:Si,:V,:Se)";
 
         template.update(sql, param);
+    }
+
+    public void deleteByKhotianNumberSoil(String khotiyanNumber) {
+
+        MapSqlParameterSource param = new MapSqlParameterSource("khotiyanNumber", khotiyanNumber);
+        String sql = "delete from khotiyan_element_percentage where khotiyanNumberSoil=:khotiyanNumber";
+
+        template.update(sql, param);
+
     }
 
 }

@@ -13,6 +13,8 @@ import com.models.CropName;
 import com.models.Khotiyan_Element_Percentage;
 import com.utils.GetBeans;
 import java.util.List;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,9 +38,15 @@ public class AdminPanel {
         getBeans.setFileName("dbBean.xml");
         KhotiyanElementPercentageDao dao = getBeans.getBean("khotiyanElementPercentageDao");
 
-        //We have to delete existing khotiyan number here
-        //Using try-catch in case of duplicate key exception
-        dao.insert(kep);
+        try {
+            dao.insert(kep);
+        } catch (DuplicateKeyException ex) {
+            dao.deleteByKhotianNumberSoil(kep.getKhotiyanNumberSoil());
+            dao.insert(kep);
+        } catch (DataAccessException ex) {
+            //the message should be inserted into a jsp page
+        }
+
         return "redirect:/adminPanel";
 
     }
@@ -96,6 +104,8 @@ public class AdminPanel {
 
         if (actionType.equals("update")) {
             dao.updateByname(crop);
+        } else {
+            dao.insert(crop);
         }
 
         return "redirect:/updateCropInfo";
