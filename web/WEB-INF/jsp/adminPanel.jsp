@@ -510,130 +510,41 @@
                             <!--END CROP UPDATE-->
 
                         </div>
-                        <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-                            <div class="panel-heading">
+                            <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+                            <div class="panel-heading" style="background: #009966">
                                 <h2>Select & delete Crop's info</h2>
                                 <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
                                     <span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 
                             </div>
                             <div class="panel-body no-padding" style="display: block;">
-                                <table class="table table-striped table-bordered">
+                                <table class="table table-bordered">
                                     <thead>
-                                        <tr>
+                                        <tr style="background: #666666">
                                             <th>Select</th>
-                                            <th>#</th>
                                             <th>Crop Name</th>
-                                            <th>Ph</th>
-                                            <th>K</th>
-                                            <th>Ca</th>
-                                            <th>Mg</th>
-                                            <th>S</th>
-                                            <th>Pb</th>
-                                            <th>Al</th>
-                                            <th>NO3-N</th>
-                                            <th>Zn</th>
-                                            <th>Cu</th>
-                                            <th>H2O</th>
-                                            <th>O2</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="success">
+                                        <tr >
                                             <td class="hidden-xs">
                                                 <input type="checkbox" class="checkbox">
                                             </td>
-                                            <th scope="row">1</th>
                                             <td>iri1</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
                                         </tr>
-                                        <tr>
+                                        <tr >
                                             <td class="hidden-xs">
                                                 <input type="checkbox" class="checkbox">
                                             </td>
-                                            <th scope="row">2</th>
                                             <td>iri2</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
                                         </tr>
-                                        <tr class="info">
+                                        <tr >
                                             <td class="hidden-xs">
                                                 <input type="checkbox" class="checkbox">
                                             </td>
-                                            <th scope="row">3</th>
                                             <td>iri3</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
                                         </tr>
-                                        <tr>
-                                            <td class="hidden-xs">
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <th scope="row">4</th>
-                                            <td>iri4</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td class="hidden-xs">
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <th scope="row">5</th>
-                                            <td>iri5</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                            <td>0.0</td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                                 <button type="button" class="btn btn-success warning_2">Delete</button>
