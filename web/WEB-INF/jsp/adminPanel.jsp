@@ -526,20 +526,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr >
-                                            <td class="hidden-xs">
+                                        <tr>
+                                            <td>
                                                 <input type="checkbox" class="checkbox">
                                             </td>
                                             <td>iri1</td>
                                         </tr>
-                                        <tr >
-                                            <td class="hidden-xs">
+                                        <tr>
+                                            <td>
                                                 <input type="checkbox" class="checkbox">
                                             </td>
                                             <td>iri2</td>
                                         </tr>
                                         <tr >
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <input type="checkbox" class="checkbox">
                                             </td>
                                             <td>iri3</td>
