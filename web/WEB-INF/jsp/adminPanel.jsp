@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Modern an Admin Panel Category Flat Bootstarp Resposive Website Template | Forms :: w3layouts</title>
+        <title>Krishi Officer Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -99,7 +94,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-                                <!--Input on behalf of farmer-->
+                                <!--START FARMER INPUT-->
 
                                 <%if (request.getAttribute("farmerInfoInput") != null) {%>
 
@@ -293,16 +288,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                             <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
                                 <!--START CROP UPDATE-->
-                                <%if (request.getAttribute("cropForUpdate") != null) {%>
+                                <%if (request.getAttribute("cropName") != null) {%>
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="dropdown">
-                                        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-                                            <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
-                                            <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
-                                        </ul>
+                                        <!--                                        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
+                                                                                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                                                                                    <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
+                                                                                    <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
+                                                                                </ul>-->
+                                        <sf:form modelAttribute="cropName" method="POST" action="getCropForUpdate">
+                                            <sf:select path="cropName" items="${allCrops}"/>
+                                            <!--<input type="submit" value="GETCROP">-->
+                                            <button type="submit" class="btn btn-success warning_2">GetCrop</button>
+                                        </sf:form>
                                     </li>
                                 </ul>
+                                <%}%>
+
+                                <%if (request.getAttribute("cropForUpdate") != null) {%>
                                 <div class="panel-body no-padding">
                                     <h2>Update "Crop's" info</h2>
                                     <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
@@ -311,8 +314,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
 
 
-                                <sf:form modelAttribute="cropForUpdate">
+
+                                <sf:form modelAttribute="cropForUpdate" action="updateCrop" method="POST">
                                     <div class="panel-body no-padding" style="display: block;">
+
+                                        <input type="hidden" name="actionType" value="<%=request.getAttribute("actionType")%>">
 
                                         <label for="focusedinput" class="col-sm-2 control-label">Crop Name</label>
                                         <div class="col-sm-8">
@@ -494,7 +500,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                             </tbody>
                                         </table>
-                                        <button type="button" class="btn btn-success warning_2">Update</button>
+                                        <button type="submit" class="btn btn-success warning_2">Update</button>
                                     </div>
                                 </sf:form>
                                 <%}%>
