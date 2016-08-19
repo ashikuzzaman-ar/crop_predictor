@@ -558,14 +558,17 @@
             <div class="cloud">
                 <div class="grid-date">
                     <div class="date">
-                        
-                        <div class="form-group" style="color: #ffffff">
-                            <h3>Farming Sessions</h3>
-                                <label><input type="checkbox" class="checkbox">Spring       </label>
-                                <label><input type="checkbox" class="checkbox">Summer       </label>
-                                <label><input type="checkbox" class="checkbox">Fall         </label>
-                        </div>
-                        
+                        <div class="row" style="color: #ffffff">
+                                <div class="col-md-3 grid_box1">
+                                    <h3>Farming Sessions</h3>
+                                </div>
+                                <div class="col-md-9">
+                                    <label><input type="checkbox" class="checkbox">Spring</label>
+                                    <label><input type="checkbox" class="checkbox">Summer</label>
+                                    <label><input type="checkbox" class="checkbox">Fall</label>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
                         <form action="#" method="GET">
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control1 input-search" placeholder="Khotiyan Number">
@@ -574,13 +577,12 @@
                                 </span>
                             </div>
                         </form>
-                        
                     </div>
                     
                     <h4>Crops : iri1,iri2,iri3</h4>
                     
                 </div>
-                <p class="monday">Select options & insert khotiyan number to get your crop prediction</p>
+                <p class="monday">Select options & insert khotiyan number to get your prediction for crops</p>
             </div>
             <!-- /#page-wrapper -->
         </div>
