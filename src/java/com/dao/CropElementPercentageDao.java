@@ -6,6 +6,8 @@
 package com.dao;
 
 import com.models.CropElementPercentage;
+import com.models.TempCropModel;
+import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -65,6 +67,26 @@ public class CropElementPercentageDao extends Parent_Dao {
 
         template.update(sql, param);
 
+    }
+
+    public List<String> getCropNameFromElements(TempCropModel crop) {
+
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(crop);
+        String sql = "Select crop_name from crop_element_percentage where "
+                + "C=:C AND H=:H AND O=:O AND N=:N AND P=:P AND K=:K AND S=:S AND Ca=:Ca"
+                + " AND Mg=:Mg AND Fe=:Fe AND Mo=:Mo AND B=:B AND Cu=:Cu AND Mn=:Mn AND"
+                + " Na=:Na AND Zn=:Zn AND Ni=:Ni AND Cl=:Cl AND Co=:Co AND Al=:Al AND"
+                + " Si=:Si AND V=:V AND Se=:Se ";
+
+        return template.queryForList(sql, param, String.class);
+
+    }
+
+    public List<CropElementPercentage> getAll() {
+
+        String sql = "Select * from crop_element_percentage";
+
+        return template.query(sql, BeanPropertyRowMapper.newInstance(CropElementPercentage.class));
     }
 
 }

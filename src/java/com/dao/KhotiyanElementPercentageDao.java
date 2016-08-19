@@ -6,6 +6,7 @@
 package com.dao;
 
 import com.models.Khotiyan_Element_Percentage;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
@@ -31,6 +32,14 @@ public class KhotiyanElementPercentageDao extends Parent_Dao {
 
         template.update(sql, param);
 
+    }
+
+    public Khotiyan_Element_Percentage getByKhotianNumberSoil(String khotiyanNumber) {
+
+        MapSqlParameterSource param = new MapSqlParameterSource("khotiyanNumber", khotiyanNumber);
+        String sql = "select * from khotiyan_element_percentage where khotiyanNumberSoil=:khotiyanNumber";
+
+        return template.queryForObject(sql, param, BeanPropertyRowMapper.newInstance(Khotiyan_Element_Percentage.class));
     }
 
 }

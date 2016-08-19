@@ -11,8 +11,12 @@ import com.dao.KhotiyanElementPercentageDao;
 import com.models.CropElementPercentage;
 import com.models.CropName;
 import com.models.Khotiyan_Element_Percentage;
+import com.services.KNNBasedOnSoilElement;
 import com.utils.GetBeans;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -116,6 +120,31 @@ public class AdminPanel {
 
         return "redirect:/updateCropInfo";
 
+    }
+
+    @RequestMapping(value = "gotoPrediction", method = RequestMethod.GET)
+    public String doPOST3(Model model) {
+
+        model.addAttribute("showPrediction", " ");
+        return "adminPanel";
+    }
+
+    @RequestMapping(value = "getPredictedCrops", method = RequestMethod.POST)
+    public String doPOST3(@RequestParam("khotiyanNumber") String khotiyanNumber,
+            Model model) {
+
+        KNNBasedOnSoilElement classifier = new KNNBasedOnSoilElement();
+        List<String> predictedCrops = new ArrayList<>();
+
+        try {
+            predictedCrops = classifier.givePrediction(khotiyanNumber);
+        } catch (Exception ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        model.addAttribute("predictedCrops", predictedCrops);
+        model.addAttribute("showPrediction", " ");
+        return "adminPanel";
     }
 
 }

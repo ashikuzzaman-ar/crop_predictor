@@ -1,4 +1,5 @@
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
@@ -56,7 +57,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard nav_icon"></i>Get Prediction</a>
+                            <a href="gotoPrediction"><i class="fa fa-dashboard nav_icon"></i>Get Prediction</a>
                         </li>
                         <li>
                             <a href="index"><i class="fa fa-indent nav_icon"></i>Home</a>
@@ -513,7 +514,7 @@
                             <!--END CROP UPDATE-->
 
                         </div>
-                            <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+                        <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
                             <div class="panel-heading" style="background: #009966">
                                 <h2>Select & delete Crop's info</h2>
                                 <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}">
@@ -547,53 +548,67 @@
                                             </td>
                                             <td>iri3</td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </table>
                                 <button type="button" class="btn btn-success warning_2">Delete</button>
                             </div>
-                            </div>
-                            </form>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cloud">
-                <div class="grid-date">
-                    <div class="date">
-                        <form action="#" method="GET">
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control1 input-search" placeholder="Khotiyan Number">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="button"><i class="fa fa-cog fa-spin fa-fw"></i>Start Prediction</button>
-                                </span>
-                            </div>
                         </form>
                     </div>
-                    <h4>Crops : iri1,iri2,iri3</h4>
                 </div>
-                <p class="monday">Select options & insert khotiyan number to get your prediction for crops</p>
             </div>
-            <!-- /#page-wrapper -->
         </div>
-        <!-- /#wrapper -->
-        <!-- Nav CSS -->
-        <link href="css/custom.css" rel="stylesheet">
-        <!-- Metis Menu Plugin JavaScript -->
-        <script>
-            $(document).ready(function () {
-                $(".in").mouseenter(function () {
-                    $(this).val('');
-                });
-                $(".in").mouseleave(function () {
-                    var value = $(this).val();
-                    if (value === '') {
-                        $(this).val('0.0');
-                    }
-                });
+
+        <!--START Prediction-->
+        <%if (request.getAttribute("showPrediction") != null) {%>
+        <div class="cloud">
+            <div class="grid-date">
+                <div class="date">
+                    <form action="getPredictedCrops" method="POST">
+                        <div class="input-group">
+                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Khotiyan Number">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-success" type="button"><i class="fa fa-cog fa-spin fa-fw"></i>Start Prediction</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+                <%if (request.getAttribute("predictedCrops") != null
+                            && ((List<String>) request.getAttribute("predictedCrops")).size() != 0) {%>
+                <h4>Predicted Crops : 
+                    <% for (String crop : (List<String>) request.getAttribute("predictedCrops")) {%>
+                    <%= crop%>
+                    <%}%>
+                </h4>
+                <%}%>
+
+            </div>
+            <p class="monday">Select options & insert khotiyan number to get your prediction for crops</p>
+        </div>
+        <%}%>
+        <!--END PREDICTION-->
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Nav CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script>
+        $(document).ready(function () {
+            $(".in").mouseenter(function () {
+                $(this).val('');
             });
-        </script>
-        <script src="<c:url value="js/metisMenu.min.js" />"></script>
-        <script src="<c:url value="js/custom.js" />"></script>
-    </body>
+            $(".in").mouseleave(function () {
+                var value = $(this).val();
+                if (value === '') {
+                    $(this).val('0.0');
+                }
+            });
+        });
+    </script>
+    <script src="<c:url value="js/metisMenu.min.js" />"></script>
+    <script src="<c:url value="js/custom.js" />"></script>
+</body>
 </html>
