@@ -549,32 +549,59 @@
                                 </table>
                                 <button type="button" class="btn btn-success warning_2">Delete</button>
                             </div>
+                            </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
+            <div class="cloud">
+                <div class="grid-date">
+                    <div class="date">
+                        
+                        <div class="form-group" style="color: #ffffff">
+                            <h3>Farming Sessions</h3>
+                                <label><input type="checkbox" class="checkbox">Spring       </label>
+                                <label><input type="checkbox" class="checkbox">Summer       </label>
+                                <label><input type="checkbox" class="checkbox">Fall         </label>
+                        </div>
+                        
+                        <form action="#" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control1 input-search" placeholder="Khotiyan Number">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="button"><i class="fa fa-cog fa-spin fa-fw"></i>Start Prediction</button>
+                                </span>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    
+                    <h4>Crops : iri1,iri2,iri3</h4>
+                    
+                </div>
+                <p class="monday">Select options & insert khotiyan number to get your crop prediction</p>
+            </div>
+            <!-- /#page-wrapper -->
         </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- Nav CSS -->
-    <link href="css/custom.css" rel="stylesheet">
-    <!-- Metis Menu Plugin JavaScript -->
-    <script>
-        $(document).ready(function () {
-            $(".in").mouseenter(function () {
-                $(this).val('');
+        <!-- /#wrapper -->
+        <!-- Nav CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+        <!-- Metis Menu Plugin JavaScript -->
+        <script>
+            $(document).ready(function () {
+                $(".in").mouseenter(function () {
+                    $(this).val('');
+                });
+                $(".in").mouseleave(function () {
+                    var value = $(this).val();
+                    if (value === '') {
+                        $(this).val('0.0');
+                    }
+                });
             });
-            $(".in").mouseleave(function () {
-                var value = $(this).val();
-                if (value === '') {
-                    $(this).val('0.0');
-                }
-            });
-        });
-    </script>
-    <script src="<c:url value="js/metisMenu.min.js" />"></script>
-    <script src="<c:url value="js/custom.js" />"></script>
-</body>
+        </script>
+        <script src="<c:url value="js/metisMenu.min.js" />"></script>
+        <script src="<c:url value="js/custom.js" />"></script>
+    </body>
 </html>
