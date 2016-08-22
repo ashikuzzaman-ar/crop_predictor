@@ -49,6 +49,8 @@ public class AdminPanel {
             dao.insert(kep);
         } catch (DataAccessException ex) {
             //the message should be inserted into a jsp page
+        } catch (Exception ex) {
+
         }
 
         return "redirect:/adminPanel";
