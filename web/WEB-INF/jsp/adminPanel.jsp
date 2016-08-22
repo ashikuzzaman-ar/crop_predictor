@@ -585,7 +585,7 @@
                 <%}%>
 
             </div>
-            <p class="monday">Select options & insert khotiyan number to get your prediction for crops</p>
+            <p class="monday">Insert khotiyan number and get predictions for crops</p>
         </div>
         <%}%>
         <!--END PREDICTION-->

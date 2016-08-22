@@ -9,7 +9,7 @@
 
         <div class="w3-row-padding w3-margin-top">
 
-            <a href="cropPrediction"><div class="w3-third">
+            <a href="#"><div class="w3-third">
                     <div class="card-1">
                         <div class="services-grid">
                             <h4 class="bold-700">Crop Prediction</h4>

@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="logo">
-                    <h1><a href="index">Crop Booster</a></h1>
+                    <h1><a href="index">Crop Predictor</a></h1>
                 </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->

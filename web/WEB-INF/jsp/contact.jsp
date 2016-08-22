@@ -1,32 +1,5 @@
 <%@ include file="headerOne.jsp" %>
 <body>
-    <!--baner-->
-    <div class="banner">
-        <!-- container -->
-        <div class="container">
-            <div class="banner-top">
-                <div class="social">
-                    <ul>
-                        <li><a href="#" class="facebook"> </a></li>
-                        <li><a href="#" class="facebook twitter"> </a></li>
-                        <li><a href="#" class="facebook chrome"> </a></li>
-                        <li><a href="#" class="facebook dribbble"> </a></li>
-                    </ul>
-                </div>
-                <div class="header-top-right">
-                    <form>
-                        <input type="text" placeholder="Search" required="">
-                        <input type="submit" value="">
-                        <div class="clearfix"> </div>
-                    </form>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-        <!-- //container -->
-    </div>
-    <!--//baner--> 
-
     <!--The navbar-header-->
     <%@ include file="headerTwo.jsp" %>
     <!--//The navbar-header-->
@@ -36,7 +9,7 @@
     <div class="contact">
         <div class="container">
             <div class="contact-info">
-                <h2>Contact</h2>
+                <br><br><br><h2>Contact</h2>
             </div>
             <div class="contact-infom">
                 <h4>Miscellaneous Information</h4>
@@ -44,7 +17,7 @@
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.It was popularised in the 1960s with the release of Letraset
                     and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             </div>
-            <div class="contact-grids">
+            <div class="contact-grids" style="color: #ffffff">
                 <div class="col-md-7 contact-para">
                     <h5>Contact Form</h5>
                     <form>

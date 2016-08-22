@@ -1,40 +1,62 @@
+<!DOCTYPE html>
 <%@ include file="headerOne.jsp" %>
 <body>
-    <!--baner-->
-    <div class="banner">
-        <!-- container -->
-        <div class="container">
-            <div class="banner-top">
-                <div class="social">
-                    <ul>
-                        <li><a href="#" class="facebook"> </a></li>
-                        <li><a href="#" class="facebook twitter"> </a></li>
-                        <li><a href="#" class="facebook chrome"> </a></li>
-                        <li><a href="#" class="facebook dribbble"> </a></li>
-                    </ul>
-                </div>
-                <div class="header-top-right">
-                    <form>
-                        <input type="text" placeholder="Search" required="">
-                        <input type="submit" value="">
-                        <div class="clearfix"> </div>
-                    </form>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-        <!-- //container -->
-    </div>
-    <!--//baner-->
-    
-    <!--The navbar-header-->
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <%@ include file="headerTwo.jsp" %>
-    <!--//The navbar-header-->
-    
+    <script>
+        $(document).ready(function () {
+            var navoffeset = $(".top-nav").offset().top;
+            $(window).scroll(function () {
+                var scrollpos = $(window).scrollTop();
+                if (scrollpos >= navoffeset) {
+                    $(".top-nav").addClass("fixed");
+                } else {
+                    $(".top-nav").removeClass("fixed");
+                }
+            });
+
+        });
+    </script>
+    <!-- /script-for sticky-nav -->
+    <!-- /script-for login/signup -->
+    <script>
+        $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+            var $this = $(this), label = $this.prev('label');
+            if (e.type === 'keyup') {
+                if ($this.val() === '') {
+                    label.removeClass('active highlight');
+                } else {
+                    label.addClass('active highlight');
+                }
+            } else if (e.type === 'blur') {
+                if ($this.val() === '') {
+                    label.removeClass('active highlight');
+                } else {
+                    label.removeClass('highlight');
+                }
+            } else if (e.type === 'focus') {
+                if ($this.val() === '') {
+                    label.removeClass('highlight');
+                } else if ($this.val() !== '') {
+                    label.addClass('highlight');
+                }
+            }
+        });
+        $('.tab a').on('click', function (e) {
+            e.preventDefault();
+            $(this).parent().addClass('active');
+            $(this).parent().siblings().removeClass('active');
+            target = $(this).attr('href');
+            $('.tab-content > div').not(target).hide();
+            $(target).fadeIn(600);
+        });
+
+    </script>
+    <!-- /script-for login/signup -->
     <!--navigation-->
     <div class="about-top">
         <div class="about-info">
-            <h2>About</h2>
+            <br><br><br><h2>About</h2>
         </div>
         <!-- banner-bottom -->
         <div class="about-grid-top">
@@ -44,9 +66,7 @@
                     <h3>A brief history of us</h3>
                     <h4>Meet the largest independent mining company</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate sem vitae tortor venenatis 
-                        elementum. Suspendisse Pellentesque dignissim sagittis pharetra. Nulla blandit ac nibh rutrum tincidunt. Suspendisse imperdiet velit fermentum mauris arcu, eu hendrerit felis gravida at. Pellentesque habitant morbi 
-                        tristique senectus et netus et malesuada fames ac turpis Suspendisse Pellentesque dignissim sagittis pharetra. Nulla blandit ac nibh rutrum tincidunt. Suspendisse imperdiet velit fermentum mauris arcu, eu hendrerit felis gravida at. Pellentesque habitant morbi 
-                        tristique senectus et netus.
+                        elementum. Suspendisse Pellentesque dignissim sagittis pharetra. Nulla blandit ac nibh rutrum tincidunt. Suspendisse imperdiet velit fermentum mauris arcu, eu hendrerit felis gravida at.
                     </p>
                 </div>
                 <div class="col-md-6 about-right">
@@ -67,8 +87,7 @@
                             diam. Cras ullamcorper lorem eu sapien viverra cursus. Pellentesque commodo libero eget malesuada blandit. 
                             <span>Integer at imperdiet orci. Donec laoreet dignissim ex, vitae hendrerit nulla. Praesent efficitur ex vel tempus 
                                 blandit. Nunc sed purus ac sapien cursus eleifend vitae id ipsum. Mauris nec vehicula est. </span>
-                            Nullam ac odio massa nullam et condimentum magna, eget congue dui.Sed sit amet laoreet libero. Duis faucibus 
-                            felis et dolor ultrices pulvinar eu at orci.
+                            Nullam ac odio massa nullam et condimentum magna, eget congue dui.Sed sit amet laoreet libero.
                         </p>
                     </div>
                     <div class="col-md-6 about-bottom-left about-bottom-right">
@@ -77,8 +96,7 @@
                             diam. Cras ullamcorper lorem eu sapien viverra cursus. Pellentesque commodo libero eget malesuada blandit. 
                             <span>Integer at imperdiet orci. Donec laoreet dignissim ex, vitae hendrerit nulla. Praesent efficitur ex vel tempus 
                                 blandit. Nunc sed purus ac sapien cursus eleifend vitae id ipsum. Mauris nec vehicula est. </span>
-                            Nullam ac odio massa nullam et condimentum magna, eget congue dui.Sed sit amet laoreet libero. Duis faucibus 
-                            felis et dolor ultrices pulvinar eu at orci.
+                            Nullam ac odio massa nullam et condimentum magna, eget congue dui.Sed sit amet laoreet libero.
                         </p>
                     </div>
                     <div class="clearfix"> </div>
@@ -88,36 +106,29 @@
         </div>
         <!-- //about-bottom -->
         <!-- about-team -->
-        <div class="about-team">
-            <!-- container -->
-            <div class="container">
-                <h4>Work Team</h4>
-                <div class="team-grids">
-                    <div class="col-md-3 team-grid">
-                        <img src="images/t1.jpg" alt="">
-                        <h6>Jain Smith</h6>
-                        <p> Curabitur orci massa convallis id mauris sed venenatis porttitor at leo nec purus</p>
-                    </div>
-                    <div class="col-md-3 team-grid">
-                        <img src="images/t2.jpg" alt="">
-                        <h6>shan carter</h6>
-                        <p> Curabitur orci massa convallis id mauris sed venenatis porttitor at leo nec purus</p>
-                    </div>
-                    <div class="col-md-3 team-grid">
-                        <img src="images/t3.jpg" alt="">
-                        <h6>Jack dany</h6>
-                        <p> Curabitur orci massa convallis id mauris sed venenatis porttitor at leo nec purus</p>
-                    </div>
-                    <div class="col-md-3 team-grid">
-                        <img src="images/t4.jpg" alt="">
-                        <h6>Mary Jain</h6>
-                        <p> Curabitur orci massa convallis id mauris sed venenatis porttitor at leo nec purus</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
+        <div class="w3-row-padding" >
+            <div class=" w3-quarter s4" >
+                <h3 style="text-align: center;text-decoration: underline">Sajid Ahmed</h3>
+                <img src="images/sajid.jpg" style="width:100%">
+                <h4 style="text-align: center">AI designer</h4>
             </div>
-            <!-- //container -->
+            <div class=" s4 w3-quarter">
+                <h3 style="text-align: center;text-decoration: underline">Imtiaz Mamun</h3>
+                <img src="images/am.jpg" style="width:100%">
+                <h4 style="text-align: center">Front-end designer</h4>
+            </div>
+            <div class=" s4 w3-quarter">
+                <h3 style="text-align: center;text-decoration: underline">Iftakher Khondokar</h3>
+                <img src="images/ifti.jpeg" style="width:100%">
+                <h4 style="text-align: center">Database designer</h4>
+            </div>
+            <div class="s4 w3-quarter">
+                <h3 style="text-align: center;text-decoration: underline">Zubair Ahmed</h3>
+                <img src="images/anas.jpg" style="width:100%">
+                <h4 style="text-align: center">Data entry & Data controller</h4>
+            </div>
         </div>
         <!-- //about-team -->
     </div>
     <%@ include file="footerOne.jsp" %>
+    <!-- //footer -->
