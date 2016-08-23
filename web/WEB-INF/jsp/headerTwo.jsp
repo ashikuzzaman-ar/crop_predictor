@@ -9,19 +9,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="logo">
-                    <h1><a href="index">Crop Predictor</a></h1>
-                </div>
+                <!--                <div class="logo">
+                                    <h1><a href="index">Crop Predictor</a></h1>
+                                </div>-->
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-center">
-                    <li><a href="index" class="active">Home</a></li>
-                    <!--<li><a href="profile/index.jsp">Profile</a></li>-->
-                    <li><a href="about">About</a></li>
-                    <li><a href="#services" class="scroll">Services</a></li>		
-                    <li><a href="contact">Contact</a></li>
-                    <li><a href="adminPanel">Admin Panel</a></li>
+                    <li class="pseudoForHide"><a id="index" href="index">Home</a></li>
+                    <li class="pseudoForHide"><a id="about" href="about">About</a></li>
+                    <li><a href="#services" class="scroll pseudoForHide">Services</a></li>		
+                    <li><a id="contact" href="contact" class="pseudoForHide">Contact</a></li>
+                    <li><a id="admin" href="adminPanel" class="pseudoForHide">Admin Panel</a></li>
+                    <input type="hidden" id="modelAttr" value="<%= request.getAttribute("pageinfo")%>">
                 </ul>	
                 <div class="clearfix"> </div>
             </div>
@@ -42,9 +42,8 @@
         });
 
         var pageinfo = $("#modelAttr").val();
-        console.log(pageinfo);
+        $(".pseudoForHide").removeClass("active");
         $("#" + pageinfo).addClass("active");
-
     });
 </script>
 <!-- /script-for sticky-nav -->

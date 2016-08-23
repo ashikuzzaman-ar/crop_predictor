@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="headerOne.jsp" %>
 <body>
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="<c:url value="css/w3.css" />">
     <%@ include file="headerTwo.jsp" %>
     <script>
         $(document).ready(function () {

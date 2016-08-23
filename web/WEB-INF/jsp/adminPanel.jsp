@@ -597,13 +597,15 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script>
         $(document).ready(function () {
+            var beforeValue;
             $(".in").mouseenter(function () {
+                beforeValue = $(this).val();
                 $(this).val('');
             });
             $(".in").mouseleave(function () {
                 var value = $(this).val();
                 if (value === '') {
-                    $(this).val('0.0');
+                    $(this).val(beforeValue);
                 }
             });
         });

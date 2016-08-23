@@ -30,12 +30,6 @@ public class Index {
         return "about";
     }
 
-    @RequestMapping(value = "codes", method = RequestMethod.GET)
-    public String doGETCODES(Model model) {
-        model.addAttribute("pageinfo", "codes");
-        return "codes";
-    }
-
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String doGETINDEX(Model model) {
         model.addAttribute("pageinfo", "index");
@@ -49,12 +43,6 @@ public class Index {
         model.addAttribute("pageinfo", "index");
         model.addAttribute("newFarmer", new SignUpInfo());
         return "index";
-    }
-
-    @RequestMapping(value = "gallery", method = RequestMethod.GET)
-    public String doGETGALLERY(Model model) {
-        model.addAttribute("pageinfo", "gallery");
-        return "gallery";
     }
 
     @RequestMapping(value = "contact", method = RequestMethod.GET)
