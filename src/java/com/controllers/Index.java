@@ -82,4 +82,9 @@ public class Index {
         return "redirect:/index";
     }
 
+    @RequestMapping(value = "services", method = RequestMethod.GET)
+    public String doGETSERVICES(RedirectAttributes ra) {
+        return "redirect:/index";
+    }
+
 }

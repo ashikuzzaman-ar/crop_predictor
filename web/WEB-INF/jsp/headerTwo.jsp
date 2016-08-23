@@ -18,7 +18,7 @@
                 <ul class="nav navbar-nav navbar-center">
                     <li class="pseudoForHide"><a id="index" href="index">Home</a></li>
                     <li class="pseudoForHide"><a id="about" href="about">About</a></li>
-                    <li><a href="#services" class="scroll pseudoForHide">Services</a></li>		
+                    <li><a href="services" id="services" class="pseudoForHide">Services</a></li>		
                     <li><a id="contact" href="contact" class="pseudoForHide">Contact</a></li>
                     <li><a id="admin" href="adminPanel" class="pseudoForHide">Admin Panel</a></li>
                     <input type="hidden" id="modelAttr" value="<%= request.getAttribute("pageinfo")%>">
@@ -41,9 +41,21 @@
             }
         });
 
+//        This part has been added for highlighting the currently active option in sitemap
         var pageinfo = $("#modelAttr").val();
         $(".pseudoForHide").removeClass("active");
         $("#" + pageinfo).addClass("active");
+//        END
+
+//        This part has been added for scrolling To services section when inside index.jsp
+        $("#services").click(function (event) {
+            if (pageinfo === "index") {
+                event.preventDefault();
+                $("body").scrollTo("#services");
+                $("#index").removeClass("active");
+                $("#services").addClass("active");
+            }
+        });
     });
 </script>
 <!-- /script-for sticky-nav -->
