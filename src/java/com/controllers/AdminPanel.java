@@ -51,6 +51,9 @@ public class AdminPanel {
             dao.insert(kep);
         } catch (DataAccessException ex) {
             //the message should be inserted into a jsp page
+//            model.addAttribute("unknown khotiyan number", "unknown");
+            ra.addFlashAttribute("unknown khotiyan number", "unidentified khotiyan number");
+
         } catch (Exception ex) {
 
         }

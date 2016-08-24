@@ -117,6 +117,11 @@
                                 <label for="focusedinput" class="col-sm-2 control-label">Khotiyan Number</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="khotiyanNumberSoil" class="form-control1" id="focusedinput" placeholder="Khotiyan Number">
+                                    <% if (request.getAttribute("unknown khotiyan number") != null) {%>
+                                    <div class="alert alert-danger">
+                                        <strong><%=request.getAttribute("unknown khotiyan number")%></strong>
+                                    </div>
+                                    <%}%>
                                 </div>
                                 <br><br><br><br>
 
@@ -134,161 +139,161 @@
                                             <th scope="row">1</th>
                                             <td>C</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="C">
+                                                <input class="in" type="number" value="0.0" name="C" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">2</th>
                                             <td>H</td>
                                             <td>	
-                                                <input class="in" type="text" value="0.0" name="H">
+                                                <input class="in" type="number" value="0.0" name="H" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="info">
                                             <th scope="row">3</th>
                                             <td>O</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="O">
+                                                <input class="in" type="number" value="0.0" name="O" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">4</th>
                                             <td>N</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="N">
+                                                <input class="in" type="number" value="0.0" name="N" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="warning">
                                             <th scope="row">5</th>
                                             <td>P</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="P">
+                                                <input class="in" type="number" value="0.0" name="P" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">6</th>
                                             <td>K</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="K">
+                                                <input class="in" type="number" value="0.0" name="K" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="danger">
                                             <th scope="row">7</th>
                                             <td>S</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="S">
+                                                <input class="in" type="number" value="0.0" name="S" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="active">
                                             <th scope="row">8</th>
                                             <td>Ca</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Ca">
+                                                <input class="in" type="number" value="0.0" name="Ca" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="success">
                                             <th scope="row">9</th>
                                             <td>Mg</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Mg">
+                                                <input class="in" type="number" value="0.0" name="Mg" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">10</th>
                                             <td>Fe</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Fe">
+                                                <input class="in" type="number" value="0.0" name="Fe" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="info">
                                             <th scope="row">11</th>
                                             <td>Mo</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Mo">
+                                                <input class="in" type="number" value="0.0" name="Mo" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">12</th>
                                             <td>B</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="B">
+                                                <input class="in" type="number" value="0.0" name="B" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="success">
                                             <th scope="row">13</th>
                                             <td>Cu</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Cu">
+                                                <input class="in" type="number" value="0.0" name="Cu" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">14</th>
                                             <td>Mn</td>
                                             <td>	
-                                                <input class="in" type="text" value="0.0" name="Mn">
+                                                <input class="in" type="number" value="0.0" name="Mn" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="info">
                                             <th scope="row">15</th>
                                             <td>Na</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Na">
+                                                <input class="in" type="number" value="0.0" name="Na" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">16</th>
                                             <td>Zn</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Zn">
+                                                <input class="in" type="number" value="0.0" name="Zn" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="warning">
                                             <th scope="row">17</th>
                                             <td>Ni</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Ni">
+                                                <input class="in" type="number" value="0.0" name="Ni" step="0.001">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">18</th>
                                             <td>Cl</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Cl">
+                                                <input class="in" type="number" value="0.0" name="Cl" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="danger">
                                             <th scope="row">19</th>
                                             <td>Co</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Co">
+                                                <input class="in" type="number" value="0.0" name="Co" step="0.001"> 
                                             </td>
                                         </tr>
                                         <tr class="active">
                                             <th scope="row">20</th>
                                             <td>Al</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Al">
+                                                <input class="in" type="number" value="0.0" name="Al" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="success">
                                             <th scope="row">21</th>
                                             <td>Si</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Si">
+                                                <input class="in" type="number" value="0.0" name="Si" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="active">
                                             <th scope="row">22</th>
                                             <td>V</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="V">
+                                                <input class="in" type="number" value="0.0" name="V" step="0.001">
                                             </td>
                                         </tr>
                                         <tr class="success">
                                             <th scope="row">23</th>
                                             <td>Se</td>
                                             <td>
-                                                <input class="in" type="text" value="0.0" name="Se">
+                                                <input class="in" type="number" value="0.0" name="Se" step="0.001">
                                             </td>
                                         </tr>
 
@@ -347,161 +352,161 @@
                                                 <th scope="row">1</th>
                                                 <td>C</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="C"/>
+                                                    <sf:input cssClass="in" type="number"  path="C" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>H</td>
                                                 <td>	
-                                                    <sf:input cssClass="in" type="text"  path="H"/>
+                                                    <sf:input cssClass="in" type="number"  path="H" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="info">
                                                 <th scope="row">3</th>
                                                 <td>O</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="O"/>
+                                                    <sf:input cssClass="in" type="number"  path="O" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">4</th>
                                                 <td>N</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="N"/>
+                                                    <sf:input cssClass="in" type="number"  path="N" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="warning">
                                                 <th scope="row">5</th>
                                                 <td>P</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="P"/>
+                                                    <sf:input cssClass="in" type="number"  path="P" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">6</th>
                                                 <td>K</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="K"/>
+                                                    <sf:input cssClass="in" type="number"  path="K" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="danger">
                                                 <th scope="row">7</th>
                                                 <td>S</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="S"/>
+                                                    <sf:input cssClass="in" type="number"  path="S" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="active">
                                                 <th scope="row">8</th>
                                                 <td>Ca</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Ca"/>
+                                                    <sf:input cssClass="in" type="number"  path="Ca" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="success">
                                                 <th scope="row">9</th>
                                                 <td>Mg</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Mg"/>
+                                                    <sf:input cssClass="in" type="number"  path="Mg" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">10</th>
                                                 <td>Fe</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Fe"/>
+                                                    <sf:input cssClass="in" type="number"  path="Fe" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="info">
                                                 <th scope="row">11</th>
                                                 <td>Mo</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Mo"/>
+                                                    <sf:input cssClass="in" type="number"  path="Mo" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">12</th>
                                                 <td>B</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="B"/>
+                                                    <sf:input cssClass="in" type="number"  path="B" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="success">
                                                 <th scope="row">13</th>
                                                 <td>Cu</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Cu"/>
+                                                    <sf:input cssClass="in" type="number"  path="Cu" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">14</th>
                                                 <td>Mn</td>
                                                 <td>	
-                                                    <sf:input cssClass="in" type="text"  path="Mn"/>
+                                                    <sf:input cssClass="in" type="number"  path="Mn" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="info">
                                                 <th scope="row">15</th>
                                                 <td>Na</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Na"/>
+                                                    <sf:input cssClass="in" type="number"  path="Na" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">16</th>
                                                 <td>Zn</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Zn"/>
+                                                    <sf:input cssClass="in" type="number"  path="Zn" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="warning">
                                                 <th scope="row">17</th>
                                                 <td>Ni</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Ni"/>
+                                                    <sf:input cssClass="in" type="number"  path="Ni" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">18</th>
                                                 <td>Cl</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Cl"/>
+                                                    <sf:input cssClass="in" type="number"  path="Cl" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="danger">
                                                 <th scope="row">19</th>
                                                 <td>Co</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Co"/>
+                                                    <sf:input cssClass="in" type="number"  path="Co" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="active">
                                                 <th scope="row">20</th>
                                                 <td>Al</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Al"/>
+                                                    <sf:input cssClass="in" type="number"  path="Al" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="success">
                                                 <th scope="row">21</th>
                                                 <td>Si</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text"  path="Si"/>
+                                                    <sf:input cssClass="in" type="number"  path="Si" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="active">
                                                 <th scope="row">22</th>
                                                 <td>V</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text" path="V"/>
+                                                    <sf:input cssClass="in" type="number" path="V" step="0.001"/>
                                                 </td>
                                             </tr>
                                             <tr class="success">
                                                 <th scope="row">23</th>
                                                 <td>Se</td>
                                                 <td>
-                                                    <sf:input cssClass="in" type="text" path="Se"/>
+                                                    <sf:input cssClass="in" type="number" path="Se" step="0.001"/>
                                                 </td>
                                             </tr>
 
