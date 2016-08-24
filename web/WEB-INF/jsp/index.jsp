@@ -85,7 +85,7 @@
                                                 <label>
                                                     Amount of land<span class="req">*</span>
                                                 </label>
-                                                <sf:input type="number" path="landAmount" required="true" autocomplete="off"/>
+                                                <sf:input type="number" path="landAmount" required="true" autocomplete="off" step="0.001"/>
                                             </div>
 
                                             <div class="field-wrap">
