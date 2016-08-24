@@ -51,7 +51,7 @@
         $("#services").click(function (event) {
             if (pageinfo === "index") {
                 event.preventDefault();
-                $("body").scrollTo("#services");
+                $('html').scrollTo("#services");
                 $("#index").removeClass("active");
                 $("#services").addClass("active");
             }

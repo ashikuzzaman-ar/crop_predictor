@@ -51,8 +51,12 @@ public class DummyInsertService {
             crop.setSi(random.getGeneratedNumber());
             crop.setV(random.getGeneratedNumber());
             crop.setZn(random.getGeneratedNumber());
-            
-            dao.insertDummy(crop);
+
+            try {
+                dao.insertDummy(crop);
+            } catch (Exception ex) {
+
+            }
 
         }
     }

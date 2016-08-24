@@ -8,9 +8,12 @@ package com.dao;
 import com.models.CropElementPercentage;
 import com.models.TempCropModel;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 
 /**
  *
@@ -55,6 +58,9 @@ public class CropElementPercentageDao extends Parent_Dao {
 
     }
 
+    //Here lies a problem
+    //Should have used only a String as parameter for this method
+    //Try to use minimum parameter for DAO methods(NEW LESSON)
     public void deleteByName(CropElementPercentage crop) {
 
         String sql = "Delete from crop_element_percentage where crop_name=:crop_name";
@@ -66,6 +72,19 @@ public class CropElementPercentageDao extends Parent_Dao {
         sql = "Delete from crop_name where cropName=:crop_name";
 
         template.update(sql, param);
+
+    }
+
+    public void batchDeleteByNames(Map<String, String>[] cropMap) {
+
+        String sql = "Delete from crop_element_percentage where crop_name=:crop_name";
+        SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(cropMap);
+        template.batchUpdate(sql, params);
+
+        //This query may be placed inside CropNameDao
+        sql = "Delete from crop_name where cropName=:crop_name";
+
+        template.batchUpdate(sql, params);
 
     }
 

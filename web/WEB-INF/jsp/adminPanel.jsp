@@ -51,7 +51,7 @@
                                     <a href="updateCropInfo">Update</a>
                                 </li>
                                 <li>
-                                    <a href="updateCropInfo">Delete</a>
+                                    <a href="showDelete">Delete</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -514,6 +514,8 @@
                             <!--END CROP UPDATE-->
 
                         </div>
+
+                        <% if (request.getAttribute("showDeleteForm") != null) { %>
                         <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
                             <div class="panel-heading" style="background: #009966">
                                 <h2>Select & delete Crop's info</h2>
@@ -522,39 +524,14 @@
 
                             </div>
                             <div class="panel-body no-padding" style="display: block;">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr style="background: #666666">
-                                            <th>Select</th>
-                                            <th>Crop Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <td>iri1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <td>iri2</td>
-                                        </tr>
-                                        <tr >
-                                            <td>
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <td>iri3</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <button type="button" class="btn btn-success warning_2">Delete</button>
+                                <sf:form action="performDeletion" method="POST" modelAttribute="tempDeletionModel">
+                                    <sf:checkboxes cssClass="checkbox" items="${allCrops}" path="cropsToBeDeleted"/>
+                                    <br>
+                                    <button type="submit" class="btn btn-success warning_2">Delete</button>
+                                </sf:form>
                             </div>
                         </div>
-                        </form>
+                        <%}%>
                     </div>
                 </div>
             </div>

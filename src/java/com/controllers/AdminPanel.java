@@ -11,6 +11,8 @@ import com.dao.KhotiyanElementPercentageDao;
 import com.models.CropElementPercentage;
 import com.models.CropName;
 import com.models.Khotiyan_Element_Percentage;
+import com.models.TempCropDeletionModel;
+import com.services.CropElementPercentageService;
 import com.services.KNNBasedOnSoilElement;
 import com.utils.GetBeans;
 import java.util.ArrayList;
@@ -125,7 +127,7 @@ public class AdminPanel {
     }
 
     @RequestMapping(value = "gotoPrediction", method = RequestMethod.GET)
-    public String doPOST3(Model model) {
+    public String doGET2(Model model) {
 
         model.addAttribute("showPrediction", " ");
         return "adminPanel";
@@ -147,6 +149,31 @@ public class AdminPanel {
         model.addAttribute("predictedCrops", predictedCrops);
         model.addAttribute("showPrediction", " ");
         return "adminPanel";
+    }
+
+    @RequestMapping(value = "showDelete", method = RequestMethod.GET)
+    public String doGET3(Model model) {
+
+        GetBeans<CropNameDao> getBeans = new GetBeans<>();
+        getBeans.setFileName("dbBean.xml");
+        CropNameDao dao = getBeans.getBean("cropNameDao");
+
+        model.addAttribute("showDeleteForm", "");
+        model.addAttribute("tempDeletionModel", new TempCropDeletionModel());
+        model.addAttribute("allCrops", dao.getAll());
+
+        return "adminPanel";
+
+    }
+
+    @RequestMapping(value = "performDeletion", method = RequestMethod.POST)
+    public String doPOST4(@ModelAttribute("crops") TempCropDeletionModel crops) {
+
+        CropElementPercentageService service = new CropElementPercentageService();
+
+        service.batchDeleteByCropNames(crops.getCropsToBeDeleted());
+
+        return "redirect:/adminPanel";
     }
 
 }
