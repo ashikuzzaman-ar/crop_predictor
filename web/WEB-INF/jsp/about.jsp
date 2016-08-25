@@ -108,29 +108,51 @@
         </div>
         <!-- //about-bottom -->
         <!-- about-team -->
-        <div class="w3-row-padding" >
-            <div class=" w3-quarter s4" >
-                <h3 style="text-align: center;text-decoration: underline">Sajid Ahmed</h3>
-                <img src="images/sajid.jpg" style="width:100%">
-                <h4 style="text-align: center">AI designer</h4>
+        <div class="jumbotron">
+            <div class="text-center hit-the-floor">
+                <h1>Our Team</h1>
+        </div>
+        <!--</div>-->
+        <div class="w3-row-padding">
+            <div class=" w3-quarter s4 swing" >
+                <div class="w3-card-2 w3-padding-top" style="min-height:460px;color: #00cccc;background-color: #003333">
+                    <h3 style="text-align: center;text-decoration: underline;color: #1ab188">Sajid Ahmed</h3>
+                    <img class="box w3-hover-opacity" src="images/sajid.jpg" style="width:100%">
+                    <h4 style="text-align: center;color: #00cccc">AI designer</h4>
+                    <h4 style="text-align: center">Student ID : 011 133 XXX</h4>
+                    <h4 style="text-align: center">Lorem ipsum dolor sit amet</h4>
+                </div>
             </div>
-            <div class=" s4 w3-quarter">
-                <h3 style="text-align: center;text-decoration: underline">Imtiaz Mamun</h3>
-                <img src="images/am.jpg" style="width:100%">
-                <h4 style="text-align: center">Front-end designer</h4>
+            <div class=" s4 w3-quarter swing">
+                <div class="w3-card-2 w3-padding-top" style="min-height:460px;color: #00cccc;background-color: #003333">
+                    <h3 style="text-align: center;text-decoration: underline;color: #1ab188">Imtiaz Mamun</h3>
+                    <img class="box w3-hover-opacity" src="images/am.jpg" style="width:100%">
+                    <h4 style="text-align: center">Front-end designer</h4>
+                    <h4 style="text-align: center">Student ID : 011 133 XXX</h4>
+                    <h4 style="text-align: center">Lorem ipsum dolor sit amet</h4>
+                </div>
             </div>
-            <div class=" s4 w3-quarter">
-                <h3 style="text-align: center;text-decoration: underline">Iftakher Khondokar</h3>
-                <img src="images/ifti.jpeg" style="width:100%">
-                <h4 style="text-align: center">Database designer</h4>
+            <div class=" s4 w3-quarter swing">
+                <div class="w3-card-2 w3-padding-top" style="min-height:460px;color: #00cccc;background-color: #003333">
+                    <h3 style="text-align: center;text-decoration: underline;color: #1ab188">Iftakher Khondokar</h3>
+                    <img class="box w3-hover-opacity" src="images/ifti.jpeg" style="width:100%">
+                    <h4 style="text-align: center">Database designer</h4>
+                    <h4 style="text-align: center">Student ID : 011 133 XXX</h4>
+                    <h4 style="text-align: center">Lorem ipsum dolor sit amet</h4>
+                </div>
             </div>
-            <div class="s4 w3-quarter">
-                <h3 style="text-align: center;text-decoration: underline">Zubair Ahmed</h3>
-                <img src="images/anas.jpg" style="width:100%">
-                <h4 style="text-align: center">Data entry & Data controller</h4>
+            <div class="s4 w3-quarter swing">
+                <div class="w3-card-2 w3-padding-top" style="min-height:460px;color: #00cccc;background-color: #003333">
+                    <h3 style="text-align: center;text-decoration: underline;color: #1ab188">Zubair Ahmed</h3>
+                    <img class="box w3-hover-opacity" src="images/anas.jpg" style="width:100%">
+                    <h4 style="text-align: center">Data entry & Data controller</h4>
+                    <h4 style="text-align: center">Student ID : 011 133 XXX</h4>
+                    <h4 style="text-align: center">Lorem ipsum dolor sit amet</h4>
+                </div>
             </div>
         </div>
         <!-- //about-team -->
+    </div>
     </div>
     <%@ include file="footerOne.jsp" %>
     <!-- //footer -->
