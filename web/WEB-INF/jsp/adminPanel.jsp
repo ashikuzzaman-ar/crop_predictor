@@ -571,9 +571,9 @@
                                 <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per Season</h3>
                                 <form action="" method="get">
                                         <div class="input-group">
-                                            <input type="text" name="year" class="form-control1 input-search" placeholder="Year">
+                                            <input type="text" name="year" class="form-control1 input-search" placeholder="Insert Year">
                                             <span class="input-group-btn">
-                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-calendar"></i>Get Graph</button>
+                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-calendar"></i> Get Graph</button>
                                             </span>
                                         </div>
                                     </form>
@@ -597,9 +597,9 @@
                                 <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per year</h3>
                                 <form action="" method="get">
                                         <div class="input-group">
-                                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="khotiyan Number">
+                                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Insert Khotiyan Number">
                                             <span class="input-group-btn">
-                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i>Get Graph</button>
+                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i> Get Graph</button>
                                             </span>
                                         </div>
                                     </form>
