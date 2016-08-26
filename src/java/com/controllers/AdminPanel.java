@@ -168,6 +168,18 @@ public class AdminPanel {
         return "adminPanel";
 
     }
+    @RequestMapping(value = "getGraph", method = RequestMethod.GET)
+    public String doGET4(Model model) {
+
+        GetBeans<CropNameDao> getBeans = new GetBeans<>();
+        getBeans.setFileName("dbBean.xml");
+        CropNameDao dao = getBeans.getBean("cropNameDao");
+
+        model.addAttribute("showGraph", "");
+
+        return "adminPanel";
+
+    }
 
     @RequestMapping(value = "performDeletion", method = RequestMethod.POST)
     public String doPOST4(@ModelAttribute("crops") TempCropDeletionModel crops) {

@@ -25,6 +25,10 @@
         <!---//webfonts--->  
         <!-- Bootstrap Core JavaScript -->
         <script src="<c:url value="js/bootstrap.min.js" />"></script>
+        <!--Graph-->
+        <script src="<c:url value="js/Chart.js" />"></script>
+        <!--w3 css-->
+        <link rel="stylesheet" href="<c:url value="css/w3.css" />">
     </head>
     <body>
         <!-- Navigation -->
@@ -60,7 +64,10 @@
                             <a href="gotoPrediction"><i class="fa fa-dashboard nav_icon"></i>Get Prediction</a>
                         </li>
                         <li>
-                            <a href="index"><i class="fa fa-indent nav_icon"></i>Home</a>
+                            <a href="getGraph"><i class="fa fa-bar-chart-o nav_icon"></i>Graph</a>
+                        </li>
+                        <li>
+                            <a href="index"><i class="fa fa-home nav_icon"></i>Home</a>
                         </li>
                     </ul>
                 </div>
@@ -71,21 +78,18 @@
         <div id="page-wrapper">
             <div class="graphs">
                 <div class="xs">
-                    <h3>Info Forms</h3>
                     <div class="tab-content">
                         <div class="tab-pane active" id="horizontal-form">
                             <form class="form-horizontal">
 
                                 <!--START OF FARMER INPUT IF-->
                                 <%if (request.getAttribute("farmerInfoInput") != null) {%>
-                                <div class="form-group">
-                                    <label for="focusedinput" class="col-sm-2 control-label">Budget</label>
+
+                                <div class="form-group has-success" style="font-size: 28px">
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control1" id="focusedinput" placeholder="Farmer's budget in TK.">
+                                        <input disabled="" type="text" class="form-control1" id="disabledinput" placeholder="Fill up the form according to the soil test">
                                     </div>
                                 </div>
-
-
                                 <div class="form-group">
                                     <label for="checkbox" class="col-sm-2 control-label">Farming Sessions</label>
                                     <div class="col-sm-8">
@@ -94,14 +98,6 @@
                                         <div class="checkbox-inline1"><label><input type="checkbox"> Fall</label></div>
                                     </div>
                                 </div>
-
-
-                                <div class="form-group has-success" style="font-size: 28px">
-                                    <div class="col-sm-8">
-                                        <input disabled="" type="text" class="form-control1" id="disabledinput" placeholder="Fill up the form according to the soil test">
-                                    </div>
-                                </div>
-
                                 <div class="bs-example4" data-example-id="contextual-table">
                                     <%}%>
                                     <!--END OF FARMER INPUT IF-->
@@ -305,10 +301,9 @@
                         </div>
                         <%}%>
                         <!--END FARMER INPUT-->
-
+                        <%if (request.getAttribute("cropName") != null) {%>
                         <div class="demobox alert alert-warning">
                             <!--START CROP UPDATE-->
-                            <%if (request.getAttribute("cropName") != null) {%>
                             <h2><i class="fa fa-exclamation-circle" style="color: red"></i>Select & Update Crop's Info</h2>
                             <sf:form modelAttribute="cropName" method="POST" action="getCropForUpdate">
                                 <sf:select path="cropName" items="${allCrops}"/>
@@ -537,43 +532,159 @@
                             </div>
                         </div>
                         <%}%>
+
+                        <!--START Prediction-->
+                        <%if (request.getAttribute("showPrediction") != null) {%>
+                        <div class="cloud">
+                            <div class="grid-date">
+                                <div class="date">
+                                    <form action="getPredictedCrops" method="POST">
+                                        <div class="input-group">
+                                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Khotiyan Number">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-success" type="button"><i class="fa fa-cog fa-spin fa-fw"></i>Start Prediction</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <%if (request.getAttribute("predictedCrops") != null
+                                            && ((List<String>) request.getAttribute("predictedCrops")).size() != 0) {%>
+                                <h4>Predicted Crops : 
+                                    <% for (String crop : (List<String>) request.getAttribute("predictedCrops")) {%>
+                                    <%= crop%>
+                                    <%}%>
+                                </h4>
+                                <%}%>
+
+                            </div>
+                            <p class="monday">Insert khotiyan number and get predictions for crops</p>
+                        </div>
+                        <%}%>
+                        <!--END PREDICTION-->
+
+                        <!--start graph-->
+                        <% if (request.getAttribute("showGraph") != null) { %>
+
+                        <div class="w3-row">
+                            <div class="w3-half w3-container">
+                                <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per Season</h3>
+                                <form action="" method="get">
+                                        <div class="input-group">
+                                            <input type="text" name="year" class="form-control1 input-search" placeholder="Year">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-calendar"></i>Get Graph</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
+                                    <div class="w3-row">
+                                        <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
+                                            <center>Spring</center> 
+                                        </div>
+                                        <div class="w3-third w3-container w3-red" style="border: #000;border-style: solid">
+                                            <center>Summer</center>
+                                        </div>
+                                        <div class="w3-third w3-container w3-green" style="border: #000;border-style: solid">
+                                            <center>Fall</center> 
+                                        </div>
+                                    </div>
+                                    <canvas id="bar" height="300" width="420" style="width: 400px; height: 300px;"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="w3-half w3-container">
+                                <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per year</h3>
+                                <form action="" method="get">
+                                        <div class="input-group">
+                                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="khotiyan Number">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i>Get Graph</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
+                                    <div class="w3-row">
+                                        <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
+                                            <center>Spring</center> 
+                                        </div>
+                                        <div class="w3-third w3-container w3-red" style="border: #000;border-style: solid">
+                                            <center>Summer</center>
+                                        </div>
+                                        <div class="w3-third w3-container w3-green" style="border: #000;border-style: solid">
+                                            <center>Fall</center> 
+                                        </div>
+                                    </div>
+                                    <canvas id="line" height="300" width="400" style="width: 400px; height: 300px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            var lineChartData = {
+                                labels: ["2016", "2015", "2014", "2013", "2012", "2011", "2010"],
+                                datasets: [
+                                    {
+                                        fillColor: "#00aced",
+                                        strokeColor: "#00aced",
+                                        pointColor: "#000",
+                                        pointStrokeColor: "#00aced",
+                                        data: [65, 59, 90, 81, 56, 0, 40]
+                                    },
+                                    {
+                                        fillColor: "#00FF00",
+                                        strokeColor: "#00FF00",
+                                        pointColor: "#000",
+                                        pointStrokeColor: "#00FF00",
+                                        data: [45, 39, 49, 0, 17, 45, 24]
+                                    },
+                                    {
+                                        fillColor: "#ef553a",
+                                        strokeColor: "#ef553a",
+                                        pointColor: "#000",
+                                        pointStrokeColor: "#ef553a",
+                                        data: [0, 0, 30, 19, 16, 27, 13]
+                                    }
+                                ]
+
+                            };
+                            
+                            var barChartData = {
+                                labels: ["sa100", " sa101", "sa102", "sa103", "sa104", "sa105", "sa106"],
+                                datasets: [
+                                    {
+                                        fillColor: "#00aced",
+                                        strokeColor: "#00aced",
+                                        data: [65, 59, 90, 81, 56, 80, 100]
+                                    },
+                                    {
+                                        fillColor: "#ef553a",
+                                        strokeColor: "#ef553a",
+                                        data: [28, 48, 40, 19, 26, 27, 33]
+                                    },
+                                    {
+                                        fillColor: "#00FF00",
+                                        strokeColor: "#00FF00",
+                                        data: [18, 01, 50, 71, 25, 20, 53]
+                                    }
+                                ]
+
+                            };
+                            
+                            new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
+                            new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+                            
+                        </script>
+                        <%}%>
+                        <!--end graph-->
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--START Prediction-->
-        <%if (request.getAttribute("showPrediction") != null) {%>
-        <div class="cloud">
-            <div class="grid-date">
-                <div class="date">
-                    <form action="getPredictedCrops" method="POST">
-                        <div class="input-group">
-                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Khotiyan Number">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-success" type="button"><i class="fa fa-cog fa-spin fa-fw"></i>Start Prediction</button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
 
-                <%if (request.getAttribute("predictedCrops") != null
-                            && ((List<String>) request.getAttribute("predictedCrops")).size() != 0) {%>
-                <h4>Predicted Crops : 
-                    <% for (String crop : (List<String>) request.getAttribute("predictedCrops")) {%>
-                    <%= crop%>
-                    <%}%>
-                </h4>
-                <%}%>
-
-            </div>
-            <p class="monday">Insert khotiyan number and get predictions for crops</p>
-        </div>
-        <%}%>
-        <!--END PREDICTION-->
         <!-- /#page-wrapper -->
     </div>
-    <!-- /#wrapper -->
     <!-- Nav CSS -->
     <link href="css/custom.css" rel="stylesheet">
     <!-- Metis Menu Plugin JavaScript -->
