@@ -645,18 +645,18 @@
                                         data: springProfit
                                     },
                                     {
-                                        fillColor: "#00FF00",
-                                        strokeColor: "#00FF00",
-                                        pointColor: "#000",
-                                        pointStrokeColor: "#00FF00",
-                                        data: fallProfit
-                                    },
-                                    {
                                         fillColor: "#ef553a",
                                         strokeColor: "#ef553a",
                                         pointColor: "#000",
                                         pointStrokeColor: "#ef553a",
                                         data: summerProfit
+                                    },
+                                    {
+                                        fillColor: "#00FF00",
+                                        strokeColor: "#00FF00",
+                                        pointColor: "#000",
+                                        pointStrokeColor: "#00FF00",
+                                        data: fallProfit
                                     }
                                 ]
 
