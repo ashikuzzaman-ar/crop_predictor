@@ -565,36 +565,8 @@
 
                         <!--start graph-->
                         <% if (request.getAttribute("showGraph") != null) { %>
-
                         <div class="w3-row">
-                            <div class="w3-half w3-container">
-                                <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per Season</h3>
-                                <form action="" method="get">
-                                    <div class="input-group">
-                                        <input type="text" name="year" class="form-control1 input-search" placeholder="Insert Year">
-                                        <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-info" type="button"><i class="fa fa-calendar"></i> Get Graph</button>
-                                        </span>
-                                    </div>
-                                </form>
-                                <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
-                                    <div class="w3-row">
-                                        <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
-                                            <center>Spring</center> 
-                                        </div>
-                                        <div class="w3-third w3-container w3-red" style="border: #000;border-style: solid">
-                                            <center>Summer</center>
-                                        </div>
-                                        <div class="w3-third w3-container w3-green" style="border: #000;border-style: solid">
-                                            <center>Fall</center> 
-                                        </div>
-                                    </div>
-                                    <canvas id="bar" height="300" width="420" style="width: 400px; height: 300px;"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="w3-half w3-container">
-                                <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per year</h3>
+                            <h3><i class="fa fa-money" aria-hidden="true"></i> Profit Per Year</h3>
                                 <form action="getProfitByKhotiyanNumber" method="POST">
                                     <div class="input-group">
                                         <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Insert Khotiyan Number">
@@ -603,7 +575,7 @@
                                         </span>
                                     </div>
                                 </form>
-                                <%if (request.getAttribute("profitInSpring") != null) {%>
+                            <div class="w3-half w3-container">
                                 <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
                                     <div class="w3-row">
                                         <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
@@ -618,7 +590,23 @@
                                     </div>
                                     <canvas id="line" height="300" width="400" style="width: 400px; height: 300px;"></canvas>
                                 </div>
-                                <%}%>
+                            </div>
+                            
+                            <div class="w3-half w3-container">
+                                <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
+                                    <div class="w3-row">
+                                        <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
+                                            <center>Spring</center> 
+                                        </div>
+                                        <div class="w3-third w3-container w3-red" style="border: #000;border-style: solid">
+                                            <center>Summer</center>
+                                        </div>
+                                        <div class="w3-third w3-container w3-green" style="border: #000;border-style: solid">
+                                            <center>Fall</center> 
+                                        </div>
+                                    </div>
+                                    <canvas id="bar" height="300" width="420" style="width: 400px; height: 300px;"></canvas>
+                                </div>
                             </div>
                         </div>
 
@@ -661,14 +649,14 @@
                                         strokeColor: "#00FF00",
                                         pointColor: "#000",
                                         pointStrokeColor: "#00FF00",
-                                        data: summerProfit
+                                        data: fallProfit
                                     },
                                     {
                                         fillColor: "#ef553a",
                                         strokeColor: "#ef553a",
                                         pointColor: "#000",
                                         pointStrokeColor: "#ef553a",
-                                        data: fallProfit
+                                        data: summerProfit
                                     }
                                 ]
 
@@ -676,22 +664,22 @@
                             <%}%>
 
                             var barChartData = {
-                                labels: ["sa100", " sa101", "sa102", "sa103", "sa104", "sa105", "sa106"],
+                                labels: ["2016", "2015", "2014", "2013", "2012", "2011", "2010"],
                                 datasets: [
                                     {
                                         fillColor: "#00aced",
                                         strokeColor: "#00aced",
-                                        data: [65, 59, 90, 81, 56, 80, 100]
+                                        data: springProfit
                                     },
                                     {
                                         fillColor: "#ef553a",
                                         strokeColor: "#ef553a",
-                                        data: [28, 48, 40, 19, 26, 27, 33]
+                                        data: summerProfit
                                     },
                                     {
                                         fillColor: "#00FF00",
                                         strokeColor: "#00FF00",
-                                        data: [18, 01, 50, 71, 25, 20, 53]
+                                        data: fallProfit
                                     }
                                 ]
 

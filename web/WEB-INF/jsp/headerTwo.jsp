@@ -18,7 +18,8 @@
                 <ul class="nav navbar-nav navbar-center">
                     <li class="pseudoForHide"><a id="index" href="index">Home</a></li>
                     <li class="pseudoForHide"><a id="about" href="about">About</a></li>
-                    <li><a href="services" id="services" class="pseudoForHide">Services</a></li>		
+                    <!--<li><a href="services" id="services" class="pseudoForHide">Services</a></li>-->		
+                    <li><a href="#services" class="scroll">Services</a></li>
                     <li><a id="contact" href="contact" class="pseudoForHide">Contact</a></li>
                     <li><a id="admin" href="adminPanel" class="pseudoForHide">Admin Panel</a></li>
                     <input type="hidden" id="modelAttr" value="<%= request.getAttribute("pageinfo")%>">
