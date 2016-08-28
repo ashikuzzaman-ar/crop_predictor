@@ -570,13 +570,13 @@
                             <div class="w3-half w3-container">
                                 <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per Season</h3>
                                 <form action="" method="get">
-                                        <div class="input-group">
-                                            <input type="text" name="year" class="form-control1 input-search" placeholder="Insert Year">
-                                            <span class="input-group-btn">
-                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-calendar"></i> Get Graph</button>
-                                            </span>
-                                        </div>
-                                    </form>
+                                    <div class="input-group">
+                                        <input type="text" name="year" class="form-control1 input-search" placeholder="Insert Year">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-info" type="button"><i class="fa fa-calendar"></i> Get Graph</button>
+                                        </span>
+                                    </div>
+                                </form>
                                 <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
                                     <div class="w3-row">
                                         <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
@@ -595,14 +595,15 @@
 
                             <div class="w3-half w3-container">
                                 <h3><i class="fa fa-money" aria-hidden="true"></i> Profit per year</h3>
-                                <form action="" method="get">
-                                        <div class="input-group">
-                                            <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Insert Khotiyan Number">
-                                            <span class="input-group-btn">
-                                                <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i> Get Graph</button>
-                                            </span>
-                                        </div>
-                                    </form>
+                                <form action="getProfitByKhotiyanNumber" method="POST">
+                                    <div class="input-group">
+                                        <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Insert Khotiyan Number">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i> Get Graph</button>
+                                        </span>
+                                    </div>
+                                </form>
+                                <%if (request.getAttribute("profitInSpring") != null) {%>
                                 <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
                                     <div class="w3-row">
                                         <div class="w3-third w3-container w3-blue" style="border: #000;border-style: solid">
@@ -617,10 +618,34 @@
                                     </div>
                                     <canvas id="line" height="300" width="400" style="width: 400px; height: 300px;"></canvas>
                                 </div>
+                                <%}%>
                             </div>
                         </div>
 
                         <script>
+
+                            <%if (request.getAttribute("profitInSpring") != null) {%>
+                            var springProfit = new Array();
+
+                            <%for (int i = 0; i < ((List< Double>) request.getAttribute("profitInSpring")).size(); i++) {%>
+                            springProfit[<%= i%>] = '<%= ((List<Double>) request.getAttribute("profitInSpring")).get(i)%>';
+                            <%}%>
+
+                            var fallProfit = new Array();
+                            <%
+                                for (int i = 0; i < ((List<Double>) request.getAttribute("profitInFall")).size(); i++) {
+                            %>
+                            fallProfit[<%= i%>] = '<%= ((List<Double>) request.getAttribute("profitInFall")).get(i)%>';
+                            <%}%>
+
+                            var summerProfit = new Array();
+                            <%
+                                for (int i = 0; i < ((List<Double>) request.getAttribute("profitInSummer")).size(); i++) {
+                            %>
+                            summerProfit[<%= i%>] = '<%= ((List<Double>) request.getAttribute("profitInSummer")).get(i)%>';
+                            <%}%>
+
+                            console.log(springProfit);
                             var lineChartData = {
                                 labels: ["2016", "2015", "2014", "2013", "2012", "2011", "2010"],
                                 datasets: [
@@ -629,26 +654,27 @@
                                         strokeColor: "#00aced",
                                         pointColor: "#000",
                                         pointStrokeColor: "#00aced",
-                                        data: [65, 59, 90, 81, 56, 0, 40]
+                                        data: springProfit
                                     },
                                     {
                                         fillColor: "#00FF00",
                                         strokeColor: "#00FF00",
                                         pointColor: "#000",
                                         pointStrokeColor: "#00FF00",
-                                        data: [45, 39, 49, 0, 17, 45, 24]
+                                        data: summerProfit
                                     },
                                     {
                                         fillColor: "#ef553a",
                                         strokeColor: "#ef553a",
                                         pointColor: "#000",
                                         pointStrokeColor: "#ef553a",
-                                        data: [0, 0, 30, 19, 16, 27, 13]
+                                        data: fallProfit
                                     }
                                 ]
 
                             };
-                            
+                            <%}%>
+
                             var barChartData = {
                                 labels: ["sa100", " sa101", "sa102", "sa103", "sa104", "sa105", "sa106"],
                                 datasets: [
@@ -670,10 +696,10 @@
                                 ]
 
                             };
-                            
+
                             new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
                             new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
-                            
+
                         </script>
                         <%}%>
                         <!--end graph-->

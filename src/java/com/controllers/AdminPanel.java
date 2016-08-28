@@ -7,6 +7,7 @@ package com.controllers;
 
 import com.dao.CropElementPercentageDao;
 import com.dao.CropNameDao;
+import com.dao.HistoryDao;
 import com.dao.KhotiyanElementPercentageDao;
 import com.models.CropElementPercentage;
 import com.models.CropName;
@@ -36,15 +37,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 public class AdminPanel {
-    
+
     @RequestMapping(value = "input_element_aftertest", method = RequestMethod.POST)
     public String doPOST1(@ModelAttribute("kep") Khotiyan_Element_Percentage kep,
             RedirectAttributes ra) {
-        
+
         GetBeans<KhotiyanElementPercentageDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         KhotiyanElementPercentageDao dao = getBeans.getBean("khotiyanElementPercentageDao");
-        
+
         try {
             dao.insert(kep);
         } catch (DuplicateKeyException ex) {
@@ -54,66 +55,66 @@ public class AdminPanel {
             //the message should be inserted into a jsp page
 //            model.addAttribute("unknown khotiyan number", "unknown");
             ra.addFlashAttribute("unknown khotiyan number", "unidentified khotiyan number");
-            
+
         } catch (Exception ex) {
-            
+
         }
-        
+
         return "redirect:/adminPanel";
-        
+
     }
-    
+
     @RequestMapping(value = "updateCropInfo", method = RequestMethod.GET)
     public String doGET1(Model model) {
-        
+
         GetBeans<CropNameDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         CropNameDao dao = getBeans.getBean("cropNameDao");
-        
+
         model.addAttribute("cropName", new CropName());
-        
+
         List<String> cropNameList = dao.getAll();
         cropNameList.add(0, "new_crop");
         model.addAttribute("allCrops", cropNameList);
-        
+
         return "adminPanel";
-        
+
     }
-    
+
     @RequestMapping(value = "getCropForUpdate", method = RequestMethod.POST)
     public String doPOST1(@ModelAttribute("crop") CropName cropName, Model model) {
-        
+
         GetBeans<CropElementPercentageDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         CropElementPercentageDao dao = getBeans.getBean("cropElementPercentageDao");
-        
+
         if (cropName.getCropName().equals("new_crop")) {
-            
+
             CropElementPercentage crop = new CropElementPercentage();
             crop.setCrop_name("Enter name of the new crop");
             model.addAttribute("cropForUpdate", crop);
             model.addAttribute("actionType", "insert");
-            
+
         } else {
-            
+
             model.addAttribute("cropForUpdate", dao.getByName(cropName.getCropName()));
             model.addAttribute("actionType", "update");
         }
-        
+
         return "adminPanel";
-        
+
     }
-    
+
     @RequestMapping(value = "updateCrop", method = RequestMethod.POST)
     public String doPOST2(@RequestParam("actionType") String actionType,
             @ModelAttribute("crop") CropElementPercentage crop,
             RedirectAttributes ra,
             Model model) {
-        
+
         GetBeans<CropElementPercentageDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         CropElementPercentageDao dao = getBeans.getBean("cropElementPercentageDao");
-        
+
         if (actionType.equals("update")) {
             dao.updateByname(crop);
         } else {
@@ -123,90 +124,116 @@ public class AdminPanel {
                 dao.deleteByName(crop);
                 dao.insert(crop);
             }
-            
+
         }
-        
+
         return "redirect:/updateCropInfo";
-        
+
     }
-    
+
     @RequestMapping(value = "gotoPrediction", method = RequestMethod.GET)
     public String doGET2(Model model) {
-        
+
         model.addAttribute("showPrediction", " ");
         return "adminPanel";
     }
-    
+
     @RequestMapping(value = "getPredictedCrops", method = RequestMethod.POST)
     public String doPOST3(@RequestParam("khotiyanNumber") String khotiyanNumber,
             Model model) {
-        
+
         KNNBasedOnSoilElement classifier = new KNNBasedOnSoilElement();
         List<String> predictedCrops = new ArrayList<>();
-        
+
         try {
             predictedCrops = classifier.givePrediction(khotiyanNumber);
         } catch (Exception ex) {
             Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         GetBeans<CropElementPercentageDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         CropElementPercentageDao dao = getBeans.getBean("cropElementPercentageDao");
-        
+
         List<CropElementPercentage> forOutput = new ArrayList<>();
-        
+
         for (String crop : predictedCrops) {
-            
+
             forOutput.add(dao.getByName(crop));
-            
+
         }
-        
+
         WriteResultToPdf writer = new WriteResultToPdf();
-        
+
         writer.doWrite(forOutput, khotiyanNumber);
-        
+
         model.addAttribute("predictedCrops", predictedCrops);
         model.addAttribute("showPrediction", " ");
         return "adminPanel";
     }
-    
+
     @RequestMapping(value = "showDelete", method = RequestMethod.GET)
     public String doGET3(Model model) {
-        
+
         GetBeans<CropNameDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         CropNameDao dao = getBeans.getBean("cropNameDao");
-        
+
         model.addAttribute("showDeleteForm", "");
         model.addAttribute("tempDeletionModel", new TempCropDeletionModel());
         model.addAttribute("allCrops", dao.getAll());
-        
+
         return "adminPanel";
-        
+
     }
-    
+
     @RequestMapping(value = "getGraph", method = RequestMethod.GET)
     public String doGET4(Model model) {
-        
+
         GetBeans<CropNameDao> getBeans = new GetBeans<>();
         getBeans.setFileName("dbBean.xml");
         CropNameDao dao = getBeans.getBean("cropNameDao");
-        
+
         model.addAttribute("showGraph", "");
-        
+
         return "adminPanel";
-        
+
     }
-    
+
     @RequestMapping(value = "performDeletion", method = RequestMethod.POST)
     public String doPOST4(@ModelAttribute("crops") TempCropDeletionModel crops) {
-        
+
         CropElementPercentageService service = new CropElementPercentageService();
-        
+
         service.batchDeleteByCropNames(crops.getCropsToBeDeleted());
-        
+
         return "redirect:/adminPanel";
     }
-    
+
+    @RequestMapping(value = "getProfitByKhotiyanNumber", method = RequestMethod.POST)
+    public String doPOST5(@RequestParam("khotiyanNumber") String khotiyanNumber,
+            Model model) {
+
+        GetBeans<HistoryDao> getBeans = new GetBeans<>();
+        getBeans.setFileName("dbBean.xml");
+        HistoryDao dao = getBeans.getBean("historyDao");
+        model.addAttribute("showGraph", " ");
+
+        try {
+            List<Double> profitInSpring = dao.getProfit(khotiyanNumber, "spring");
+            List<Double> profitInFall = dao.getProfit(khotiyanNumber, "fall");
+            List<Double> profitInSummer = dao.getProfit(khotiyanNumber, "summer");
+
+            model.addAttribute("profitInSpring", profitInSpring);
+            model.addAttribute("profitInFall", profitInFall);
+            model.addAttribute("profitInSummer", profitInSummer);
+
+        } catch (Exception ex) {
+            model.addAttribute("insufficientDataForGraph", "");
+        }
+
+        return "adminPanel";
+
+    }
+
 }
