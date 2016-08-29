@@ -567,14 +567,16 @@
                         <% if (request.getAttribute("showGraph") != null) { %>
                         <div class="w3-row">
                             <h3><i class="fa fa-money" aria-hidden="true"></i> Profit Per Year</h3>
-                                <form action="getProfitByKhotiyanNumber" method="POST">
-                                    <div class="input-group">
-                                        <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Insert Khotiyan Number">
-                                        <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i> Get Graph</button>
-                                        </span>
-                                    </div>
-                                </form>
+                            <form action="getProfitByKhotiyanNumber" method="POST">
+                                <div class="input-group">
+                                    <input type="text" name="khotiyanNumber" class="form-control1 input-search" placeholder="Insert Khotiyan Number">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-info" type="button"><i class="fa fa-globe"></i> Get Graph</button>
+                                    </span>
+                                </div>
+                            </form>
+
+                            <%if (request.getAttribute("profitInSpring") != null) {%>
                             <div class="w3-half w3-container">
                                 <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
                                     <div class="w3-row">
@@ -591,7 +593,7 @@
                                     <canvas id="line" height="300" width="400" style="width: 400px; height: 300px;"></canvas>
                                 </div>
                             </div>
-                            
+
                             <div class="w3-half w3-container">
                                 <div class="grid_5" style="border: #000;border-style: double;border-width: thick">
                                     <div class="w3-row">
@@ -608,32 +610,44 @@
                                     <canvas id="bar" height="300" width="420" style="width: 400px; height: 300px;"></canvas>
                                 </div>
                             </div>
+                            <%}%>
+
                         </div>
 
                         <script>
 
                             <%if (request.getAttribute("profitInSpring") != null) {%>
-                            var springProfit = new Array();
 
-                            <%for (int i = 0; i < ((List< Double>) request.getAttribute("profitInSpring")).size(); i++) {%>
-                            springProfit[<%= i%>] = '<%= ((List<Double>) request.getAttribute("profitInSpring")).get(i)%>';
+                            var springProfit = new Array();
+                            <% List<Double> profitInSpring = (List<Double>) request.getAttribute("profitInSpring"); %>
+
+                            <%for (int i = 0; i < profitInSpring.size(); i++) {%>
+
+                            springProfit[<%= i%>] = '<%= profitInSpring.get(i)%>';
+
                             <%}%>
 
                             var fallProfit = new Array();
-                            <%
-                                for (int i = 0; i < ((List<Double>) request.getAttribute("profitInFall")).size(); i++) {
-                            %>
-                            fallProfit[<%= i%>] = '<%= ((List<Double>) request.getAttribute("profitInFall")).get(i)%>';
+                            <% List<Double> profitInFall = (List<Double>) request.getAttribute("profitInFall"); %>
+
+                            <%for (int i = 0; i < profitInFall.size(); i++) {%>
+
+                            fallProfit[<%= i%>] = '<%= profitInFall.get(i)%>';
+
                             <%}%>
 
                             var summerProfit = new Array();
-                            <%
-                                for (int i = 0; i < ((List<Double>) request.getAttribute("profitInSummer")).size(); i++) {
-                            %>
-                            summerProfit[<%= i%>] = '<%= ((List<Double>) request.getAttribute("profitInSummer")).get(i)%>';
+
+                            <% List<Double> profitInSummer = (List<Double>) request.getAttribute("profitInSummer"); %>
+
+
+                            <% for (int i = 0; i < profitInSummer.size(); i++) {%>
+
+                            summerProfit[<%= i%>] = '<%= profitInSummer.get(i)%>';
+
                             <%}%>
 
-                            console.log(springProfit);
+
                             var lineChartData = {
                                 labels: ["2016", "2015", "2014", "2013", "2012", "2011", "2010"],
                                 datasets: [
@@ -661,7 +675,6 @@
                                 ]
 
                             };
-                            <%}%>
 
                             var barChartData = {
                                 labels: ["2016", "2015", "2014", "2013", "2012", "2011", "2010"],
@@ -684,6 +697,7 @@
                                 ]
 
                             };
+                            <%}%>
 
                             new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
                             new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
